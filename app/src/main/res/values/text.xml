@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="Deeprichastie" type="string">Деепричастие — самостоятельная часть речи или особая форма глагола в русском языке, обозначающая добавочное действие при основном действии. Эта часть речи соединяет в себе признаки глагола (вид, залог, переходность и возвратность) и наречия (неизменяемость, синтаксическая роль обстоятельства). Отвечает на вопросы: что делая? что сделав?</item>
+	<item name="Prichastie" type="string">Причастие — особая форма глагола, которая обозначает признак предмета по действию и отвечает на вопросы прилагательного. Обладает свойствами как глагола (образована с помощью его корня), так и имени прилагательного (образована с помощью его окончания). Глагольные признаки причастия — это категория вида, залога, а также особенная предикативная форма времени.</item>
+	<item name="Pravopisanie_zapyatyh" type="string">Пунктуация (лат. punctuatio — от лат. punctum — точка) — система знаков препинания в письменности какого-либо языка, сами правила их постановки в письменной речи, а также раздел грамматики, изучающий эти правила.</item>
+	<item name="Isem_figyl" type="string">Исем фигыль</item>
+	<item name="Aergych" type="string">Аергыч</item>
+	<item name="Isem" type="string">Исем</item>
+	<item name="Grafik_funkcii" type="string">График функции — это геометрическое место точек плоскости, абсциссы (x) и ординаты (y) которых связаны указанной функцией.</item>
+	<item name="Neravenstva" type="string">Неравенства</item>
+	<item name="Okrujnost" type="string">Окружность</item>
+	<item name="Pravlenie_Aleksandra_I" type="string">Правление Александра I</item>
+	<item name="I_Mirovaya_Voina" type="string">1 Мировая Война</item>
+	<item name="Otechestvennaya_voina_1812_goda" type="string">Отечественная война 1812 года</item>
+	<item name="Past_Simple" type="string">Past Simple</item>
+	<item name="Modals" type="string">Modals</item>
+	<item name="Conditionals" type="string">Conditionals</item>
+	<item name="Teploprovodnost" type="string">Теплопроводность</item>
+	<item name="Linzy" type="string">Линзы</item>
+	<item name="Elektricheskii_tok" type="string">Электрический ток</item>
+	<item name="Okisliteli" type="string">Окислители</item>
+	<item name="Soli" type="string">Соли</item>
+	<item name="Oksidy" type="string">Оксиды</item>
+	<item name="Sposoby_vvoda_i_vyvoda" type="string">Ввод-вывод в информатике — взаимодействие между обработчиком информации (например, компьютер) и внешним миром, который может представлять как человек, так и любая другая система обработки информации. Ввод — сигнал или данные, полученные системой, а вывод — сигнал или данные, посланные ею (или из неё). Термин также может использоваться как обозначение (или дополнение к обозначению) определенного действия: «выполнять ввод-вывод» означает выполнение операций ввода или вывода. Устройства ввода-вывода используются человеком (или другой системой) для взаимодействия с компьютером.</item>
+	<item name="Osnovnye_ponyatiya" type="string">Основные понятия</item>
+	<item name="Vidy_peremennyh" type="string">Виды переменных</item>	
+</resources>

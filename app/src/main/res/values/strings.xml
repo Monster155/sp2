@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">sp2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string-array name="russk">
+        <item>Деепричастие</item>
+		<item>Причастие</item>
+        <item>Правописание запятых</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+
+    <string-array name="tatar">
+        <item>Исем фигыль</item>
+		<item>Аергыч</item>
+        <item>Исем</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+    <string-array name="matem">
+        <item>График функции</item>
+		<item>Неравенства</item>
+        <item>Окружность</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+    <string-array name="istor">
+        <item>Правление Александра I</item>
+		<item>1 мировая война</item>
+        <item>Отечественная война 1812 года</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+    <string-array name="angli">
+        <item>Past Simple</item>
+		<item>Modals</item>
+        <item>Conditionals</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+    <string-array name="fizik">
+        <item>Теплопроводность</item>
+		<item>Линзы</item>
+        <item>Электрический ток</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+    <string-array name="himik">
+        <item>Окислители</item>
+		<item>Соли</item>
+        <item>Оксиды</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+    <string-array name="infor">
+        <item>Способы ввода и вывода</item>
+		<item>Основные понятия</item>
+        <item>Виды переменных</item>
+		<item>(Это лишь beta версия №3.3)</item>
+    </string-array>
+    
+   	<string-array name="uroki">
+        <item>Русский язык</item>
+        <item>Татарский язык</item>
+        <item>Математика</item>
+        <item>История</item>
+        <item>Английский язык</item>
+        <item>Физика</item>
+        <item>Химия</item>
+        <item>Информатика</item>
+    </string-array>
+</resources>
