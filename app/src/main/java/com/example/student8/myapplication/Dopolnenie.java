@@ -2,6 +2,7 @@ package com.example.student8.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.opengl.ETC1;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class Dopolnenie extends Activity {
 		setContentView(R.layout.dopolnenie);
 		et.findViewById(R.id.editText1);
 		btn.findViewById(R.id.button1);
-		btn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 

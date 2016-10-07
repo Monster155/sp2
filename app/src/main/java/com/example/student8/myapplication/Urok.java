@@ -28,7 +28,7 @@ public class Urok extends Activity {
 	TextView tv, tv2;
 	Spinner sp;
 	LinearLayout ll;
-	int array;
+	int array, color;
 	HashMap<String, Integer> pas;
 
 	public void choose(){
@@ -61,47 +61,56 @@ public class Urok extends Activity {
 	public void text() {
 		int r = getIntent().getIntExtra("k", 0);
 
+
 		switch (r) {
 		case 1:
 			tv.setText("Русский язык");
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
+			color = -65536;
 			break;
 		case 2:
 			tv.setText("Татарский язык");
 			ll.setBackgroundResource(R.drawable.tatar);
 			array = R.array.tatar;
+			color = -16711936;
 			break;
 		case 3:
 			tv.setText("Математика");
 			ll.setBackgroundResource(R.drawable.matem);
 			array = R.array.matem;
+			color = -16776961;
 			break;
 		case 4:
 			tv.setText("История");
 			tv.setTextColor(Color.parseColor("#"));
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
+			color = 2131427382;
 			break;
 		case 5:
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
+			color = 2131427373;
 			break;
 		case 6:
 			tv.setText("Физика");
 			ll.setBackgroundResource(R.drawable.fizik);
 			array = R.array.fizik;
+			color = -65536;
 			break;
 		case 7:
 			tv.setText("Химия");
 			ll.setBackgroundResource(R.drawable.himik);
 			array = R.array.himik;
+			color = -256;
 			break;
 		case 8:
 			tv.setText("Информатика");
 			ll.setBackgroundResource(R.drawable.infor);
 			array = R.array.infor;
+			color = -16776961;
 			break;
 		default:
 			tv.setText("Fatal Error");
@@ -143,7 +152,7 @@ public class Urok extends Activity {
 		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					View itemSelected, int selectedItemPosition, long selectedId) {
-				((TextView) parent.getChildAt(0)).setTextColor(Color.MAGENTA);
+				((TextView) parent.getChildAt(0)).setTextColor(color);
 			    ((TextView) parent.getChildAt(0)).setTextSize(50);
 				String[] choose = getResources().getStringArray(array);
 				int id = pas.get(choose[selectedItemPosition]);
