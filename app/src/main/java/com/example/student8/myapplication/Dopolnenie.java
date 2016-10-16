@@ -22,8 +22,8 @@ public class Dopolnenie extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dopolnenie);
-		et.findViewById(R.id.editText1);
-		btn.findViewById(R.id.button1);
+		et = (EditText) findViewById(R.id.editText1);
+		btn = (Button) findViewById(R.id.button1);
         btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
