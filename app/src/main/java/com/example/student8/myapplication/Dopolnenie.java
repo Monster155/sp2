@@ -30,39 +30,28 @@ public class Dopolnenie extends Activity {
 		setContentView(R.layout.dopolnenie);
 
 		mDatabaseHelper = new DBHelper(this, "spdatabase.db", null, 1);
-		SQLiteDatabase sdb;
-		sdb = mDatabaseHelper.getReadableDatabase();
 
 		et = (EditText) findViewById(R.id.editText1);
 		btn = (Button) findViewById(R.id.button1);
-		mDatabaseHelper = new DBHelper(this, "mydatabase.db", null, 1);
 
 		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
-
-		ContentValues values = new ContentValues();
-		// Задайте значения для каждого столбца
-		values.put(DBHelper.CAT_NAME_COLUMN, "Рыжик");
-		values.put(DBHelper.PHONE_COLUMN, "4954553443");
-		values.put(DBHelper.AGE_COLUMN, "5");
-		// Вставляем данные в таблицу
-		mSqLiteDatabase.insert("cats", null, values);
 
         btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Cursor cursor = mSqLiteDatabase.query("cats", new String[]{DBHelper.CAT_NAME_COLUMN,
-								DBHelper.PHONE_COLUMN, DBHelper.AGE_COLUMN},
+				Cursor cursor = mSqLiteDatabase.query("uroki", new String[]{DBHelper.LESSON_COLUMN,
+								DBHelper.THEME_COLUMN, DBHelper.ID_COLUMN},
 						null, null,
 						null, null, null);
 
 				cursor.moveToFirst();
 
-				String catName = cursor.getString(cursor.getColumnIndex(DBHelper.CAT_NAME_COLUMN));
-				long phoneNumber = cursor.getLong(cursor.getColumnIndex(DBHelper.PHONE_COLUMN));
-				int age = cursor.getInt(cursor.getColumnIndex(DBHelper.AGE_COLUMN));
+				String lesson = cursor.getString(cursor.getColumnIndex(DBHelper.LESSON_COLUMN));
+				String theme = cursor.getString(cursor.getColumnIndex(DBHelper.THEME_COLUMN));
+				int id = cursor.getInt(cursor.getColumnIndex(DBHelper.ID_COLUMN));
 
-				et.setText("Кот " + catName + " имеет телефон " + phoneNumber + " и ему " +
-						age + " лет");
+				et.setText("Урок: " + lesson + ". Тема: " + theme + ". Id урока: " +
+						id);
 
 				// не забываем закрывать курсор
 				cursor.close();
