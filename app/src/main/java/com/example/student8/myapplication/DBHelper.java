@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
