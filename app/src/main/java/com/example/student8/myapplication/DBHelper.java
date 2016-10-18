@@ -13,16 +13,16 @@ public class DBHelper extends SQLiteOpenHelper{
     // версия базы данных
     private static final int DATABASE_VERSION = 1;
     // имя таблицы
-    private static final String DATABASE_TABLE = "cats";
+    private static final String DATABASE_TABLE = "uroki";
     // названия столбцов
-    public static final String CAT_NAME_COLUMN = "cat_name";
-    public static final String PHONE_COLUMN = "phone";
-    public static final String AGE_COLUMN = "age";
+    public static final String LESSON_COLUMN = "lesson";
+    public static final String THEME_COLUMN = "theme";
+    public static final String TEXT_COLUMN = "text1";
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
-            + " integer primary key autoincrement, " + CAT_NAME_COLUMN
-            + " text not null, " + PHONE_COLUMN + " integer, " + AGE_COLUMN
+            + " integer primary key autoincrement, " + LESSON_COLUMN
+            + " text not null, " + THEME_COLUMN + " integer, " + TEXT_COLUMN
             + " integer);";
 
 
