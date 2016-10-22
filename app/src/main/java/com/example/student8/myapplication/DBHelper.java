@@ -17,12 +17,12 @@ public class DBHelper extends SQLiteOpenHelper{
     // названия столбцов
     public static final String LESSON_COLUMN = "lesson";
     public static final String THEME_COLUMN = "theme";
-    public static final String ID_COLUMN = "id";
+    public static final String TEXT_COLUMN = "text1";
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
             + " integer primary key autoincrement, " + LESSON_COLUMN
-            + " text not null, " + THEME_COLUMN + " integer, " + ID_COLUMN
+            + " text not null, " + THEME_COLUMN + " integer, " + TEXT_COLUMN
             + " integer);";
 
 
@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
