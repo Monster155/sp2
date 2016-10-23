@@ -83,7 +83,6 @@ public class Urok extends Activity {
 			break;
 		case 4:
 			tv.setText("История");
-			tv.setTextColor(Color.parseColor("#"));
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
 			color = 2131427382;
