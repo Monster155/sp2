@@ -59,17 +59,17 @@ public class Dopolnenie extends Activity {
 			public void onClick(View v) {
 			String query = "SELECT * FROM uroki";
 			String les = "", th = "";
-			Cursor cursor2 = mSqLiteDatabase.rawQuery(query, null);
-			while (cursor2.moveToNext()) {
-				String lesson = cursor2.getString(cursor2
+			Cursor cursor = mSqLiteDatabase.rawQuery(query, null);
+			while (cursor.moveToNext()) {
+				String lesson = cursor.getString(cursor
 						.getColumnIndex(DBHelper.LESSON_COLUMN));
-				String theme = cursor2.getString(cursor2
+				String theme = cursor.getString(cursor
 						.getColumnIndex(DBHelper.THEME_COLUMN));
 				les = les + lesson + " ";
 				th = th + theme + " ";
 			}
 			et.setText(" Урок: " + les + " \n Тема: " + th);
-			cursor2.close();
+			cursor.close();
 			}
 		});
 	}
