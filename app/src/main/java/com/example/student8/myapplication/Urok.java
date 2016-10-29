@@ -5,23 +5,16 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import android.R.drawable;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.database.DataSetObserver;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import static com.example.student8.myapplication.R.id.textView;
 
 public class Urok extends Activity {
 
@@ -135,7 +128,9 @@ public class Urok extends Activity {
 		file();
 		pas = new HashMap<String, Integer>();
 		tv = (TextView) findViewById(R.id.textView1);
+		tv.setTextSize(30);
 		tv2 = (TextView) findViewById(R.id.textView2);
+		tv2.setTextSize(20);
 		ll = (LinearLayout) findViewById(R.id.LinearLayout);
 		text();
 
@@ -152,7 +147,7 @@ public class Urok extends Activity {
 			public void onItemSelected(AdapterView<?> parent,
 					View itemSelected, int selectedItemPosition, long selectedId) {
 				((TextView) parent.getChildAt(0)).setTextColor(color);
-			    ((TextView) parent.getChildAt(0)).setTextSize(50);
+			    ((TextView) parent.getChildAt(0)).setTextSize(25);
 				String[] choose = getResources().getStringArray(array);
 				int id = pas.get(choose[selectedItemPosition]);
 				tv2.setText(id);
