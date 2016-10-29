@@ -24,6 +24,8 @@ public class DBHelper extends SQLiteOpenHelper{
     private SQLiteDatabase mSqLiteDatabase;
     private DBHelper mDatabaseHelper;
 
+    Dopolnenie dp = new Dopolnenie();
+
     String lesson, theme, text;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "

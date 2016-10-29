@@ -17,13 +17,13 @@ import java.sql.ResultSet;
 
 public class Dopolnenie extends Activity {
 
-	Button btn;
+	Button btn, btn2;
 	EditText et;
 	private DBHelper mDatabaseHelper;
 	private SQLiteDatabase mSqLiteDatabase;
 
 	private static ResultSet rs;
-	String query;
+	String query, lesson, theme, text;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,27 +34,42 @@ public class Dopolnenie extends Activity {
 
 		et = (EditText) findViewById(R.id.editText1);
 		btn = (Button) findViewById(R.id.button1);
+		btn2 = (Button) findViewById(R.id.button2);
 
 		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
+		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				//берем данные из EditText-ов и добавляем в БД
+				lesson = String.valueOf(et.getText());
+				//
+				ContentValues values = new ContentValues();
+				// Задайте значения для каждого столбца
+				values.put(DBHelper.LESSON_COLUMN, lesson);
+				values.put(DBHelper.THEME_COLUMN, theme);
+				values.put(DBHelper.TEXT_COLUMN, text);
+				// Вставляем данные в таблицу
+				mSqLiteDatabase.insert("uroki", null, values);
+			}
+		});
 
-				String query = "SELECT * FROM uroki";
-				String les = "", th = "";
-				Cursor cursor2 = mSqLiteDatabase.rawQuery(query, null);
-				while (cursor2.moveToNext()) {
-					String lesson = cursor2.getString(cursor2
-							.getColumnIndex(DBHelper.LESSON_COLUMN));
-					String theme = cursor2.getString(cursor2
-							.getColumnIndex(DBHelper.THEME_COLUMN));
-					les = les + lesson + " ";
-					th = th + theme + " ";
-				}
-				et.setText(" Урок: " + les + " \n Тема: " + th);
-				cursor2.close();
+		btn2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			String query = "SELECT * FROM uroki";
+			String les = "", th = "";
+			Cursor cursor2 = mSqLiteDatabase.rawQuery(query, null);
+			while (cursor2.moveToNext()) {
+				String lesson = cursor2.getString(cursor2
+						.getColumnIndex(DBHelper.LESSON_COLUMN));
+				String theme = cursor2.getString(cursor2
+						.getColumnIndex(DBHelper.THEME_COLUMN));
+				les = les + lesson + " ";
+				th = th + theme + " ";
+			}
+			et.setText(" Урок: " + les + " \n Тема: " + th);
+			cursor2.close();
 			}
 		});
 	}

@@ -11,15 +11,34 @@
         android:entries="@array/uroki" />
 
     <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите сюда НАЗВАНИЕ урока по какому будете дополнять" />
+
+    <EditText
         android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите сюда ТЕМУ дополнения" />
+
+    <EditText
+        android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Введите сюда своё дополнение" />
+        android:hint="Введите сюда текст для дополнения" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Сохранить" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Тест"
+        android:elevation="0dp" />
 
 </LinearLayout>
