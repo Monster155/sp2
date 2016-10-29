@@ -1,5 +1,6 @@
 package com.example.student8.myapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,6 +19,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String LESSON_COLUMN = "lesson";
     public static final String THEME_COLUMN = "theme";
     public static final String TEXT_COLUMN = "text1";
+
+
+    private SQLiteDatabase mSqLiteDatabase;
+    private DBHelper mDatabaseHelper;
+
+    String lesson, theme, text;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
@@ -42,7 +49,8 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-
+        //создаем метод для заполнения
+        enter();
     }
 
     @Override
@@ -54,5 +62,17 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF IT EXISTS " + DATABASE_TABLE);
         // Создаём новую таблицу
         onCreate(db);
+    }
+
+    public void enter(){
+        mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
+        //заполняем таблицу элеметами
+        ContentValues values = new ContentValues();
+        // Задайте значения для каждого столбца
+        values.put(DBHelper.LESSON_COLUMN, lesson);
+        values.put(DBHelper.THEME_COLUMN, theme);
+        values.put(DBHelper.TEXT_COLUMN, text);
+        // Вставляем данные в таблицу
+        mSqLiteDatabase.insert("uroki", null, values);
     }
 }

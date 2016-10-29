@@ -37,13 +37,6 @@ public class Dopolnenie extends Activity {
 
 		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
 
-	/*	ContentValues values = new ContentValues();
-		// Задайте значения для каждого столбца
-		values.put(DBHelper.LESSON_COLUMN, "Математика");
-		values.put(DBHelper.THEME_COLUMN, "Сложение");
-		values.put(DBHelper.TEXT_COLUMN, "x + z = ответ");
-		// Вставляем данные в таблицу
-		mSqLiteDatabase.insert("uroki", null, values); */
 
         btn.setOnClickListener(new View.OnClickListener() {
 			@Override
