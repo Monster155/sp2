@@ -80,7 +80,7 @@
             android:text="Дополнить информацию" />
 
         <TextView
-            android:text="Special for Азалия"
+            android:text="Special for ******"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -95,7 +95,6 @@ public class Urok extends Activity {
 			break;
 		case 7:
 			tv.setText("Химия");
-			tv2.setText(Color.BLACK + " " + Color.WHITE + " " + Color.BLUE + " " + Color.RED + " " + Color.GREEN + " " + Color.YELLOW + " " + Color.GRAY + " " + Color.CYAN + " " + Color.MAGENTA);
 			ll.setBackgroundResource(R.drawable.himik);
 			array = R.array.himik;
 			color = -256;
