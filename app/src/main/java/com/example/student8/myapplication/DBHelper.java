@@ -26,7 +26,6 @@ public class DBHelper extends SQLiteOpenHelper{
 
     Dopolnenie dp = new Dopolnenie();
 
-    String lesson, theme, text;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
@@ -51,8 +50,6 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        //создаем метод для заполнения
-        enter();
     }
 
     @Override
@@ -65,18 +62,5 @@ public class DBHelper extends SQLiteOpenHelper{
         // Создаём новую таблицу
         onCreate(db);
     }
-
-    public void enter(){
-        mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
-        //заполняем таблицу элеметами
-        ContentValues values = new ContentValues();
-        // Задайте значения для каждого столбца
-        values.put(DBHelper.LESSON_COLUMN, lesson);
-        values.put(DBHelper.THEME_COLUMN, theme);
-        values.put(DBHelper.TEXT_COLUMN, text);
-        // Вставляем данные в таблицу
-        mSqLiteDatabase.insert("uroki", null, values);
-    }
-
 
 }

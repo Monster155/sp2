@@ -26,6 +26,8 @@ public class Dopolnenie extends Activity {
 	private SQLiteDatabase mSqLiteDatabase;
 	TextView tv;
 
+	Boolean en = false;
+
 	private static ResultSet rs;
 	String lesson, theme, text;
 
@@ -43,17 +45,17 @@ public class Dopolnenie extends Activity {
 		btn2 = (Button) findViewById(R.id.button2);
 		tv = (TextView) findViewById(R.id.textView3);
 
-		tv.setText(Color.BLACK + " " + Color.WHITE + " " + Color.BLUE + " " + Color.RED + " " + Color.GREEN + " " + Color.YELLOW + " " + Color.GRAY + " " + Color.CYAN + " " + Color.MAGENTA);
+		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta");
 		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
 
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//берем данные из EditText-ов и добавляем в БД
+				// Берем данные из EditText-ов и добавляем в БД
 				lesson = String.valueOf(etl.getText());
 				theme = String.valueOf(ett.getText());
 				text = String.valueOf(etT.getText());
-				//
+
 				ContentValues values = new ContentValues();
 				// Задайте значения для каждого столбца
 				values.put(DBHelper.LESSON_COLUMN, lesson);
@@ -68,17 +70,22 @@ public class Dopolnenie extends Activity {
 			@Override
 			public void onClick(View v) {
 			String query = "SELECT * FROM uroki";
-			String les = "", th = "";
+			String les = "", th = "", txt = "";
 			Cursor cursor = mSqLiteDatabase.rawQuery(query, null);
 			while (cursor.moveToNext()) {
 				String lesson = cursor.getString(cursor
 						.getColumnIndex(DBHelper.LESSON_COLUMN));
 				String theme = cursor.getString(cursor
 						.getColumnIndex(DBHelper.THEME_COLUMN));
+				String text = cursor.getString(cursor
+						.getColumnIndex(DBHelper.TEXT_COLUMN));
 				les = les + lesson + " ";
 				th = th + theme + " ";
+				txt = txt + text + " ";
 			}
-			etl.setText(" Урок: " + les + " \n Тема: " + th);
+			etl.setText(" Урок: " + les);
+			ett.setText(" Тема: " + th);
+			etT.setText(" Текст: " + txt);
 			cursor.close();
 			}
 		});
