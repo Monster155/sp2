@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String TEXT_COLUMN = "text1";
 
 
-    private SQLiteDatabase mSqLiteDatabase;
+    SQLiteDatabase db;
     private DBHelper mDatabaseHelper;
 
     Dopolnenie dp = new Dopolnenie();
@@ -32,7 +32,6 @@ public class DBHelper extends SQLiteOpenHelper{
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
             + " text not null);";
-
 
     DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,14 +49,23 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
+        // Gets the database in write mode
+        db = mDatabaseHelper.getWritableDatabase();
+        // Создаем объект ContentValues, где имена столбцов ключи,
+        // а информация о госте является значениями ключей
+        ContentValues values = new ContentValues();
+        values.put(LESSON_COLUMN, "Математика");
+        values.put(THEME_COLUMN, "Сложение");
+        values.put(TEXT_COLUMN, "A + B = C");
+
+        long newRowId = db.insert(DATABASE_NAME, null, values);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Запишем в журнал
         Log.w("SQLite", "Обновляемся с версии " + oldVersion + " на версию " + newVersion);
-
-        // Удаляем старую таблицу и создаём новую
+        // Удаляем старую таблицу
         db.execSQL("DROP TABLE IF IT EXISTS " + DATABASE_TABLE);
         // Создаём новую таблицу
         onCreate(db);
