@@ -22,11 +22,9 @@ public class Dopolnenie extends Activity {
 
 	Button btn, btn2;
 	EditText etl, ett, etT;
-	private DBHelper mDatabaseHelper;
-	private SQLiteDatabase mSqLiteDatabase;
+	private DBHelper mDBH;
+	private SQLiteDatabase db;
 	TextView tv;
-
-	Boolean en = false;
 
 	private static ResultSet rs;
 	String lesson, theme, text;
@@ -36,7 +34,21 @@ public class Dopolnenie extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dopolnenie);
 
-		mDatabaseHelper = new DBHelper(this, "spdatabase.db", null, 1);
+		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
+
+		if(mDBH.fd == false) {
+			// Gets the database in write mode
+			db = mDBH.getWritableDatabase();
+			// Создаем объект ContentValues, где имена столбцов ключи,
+			// а информация о госте является значениями ключей
+			ContentValues values = new ContentValues();
+			values.put(mDBH.LESSON_COLUMN, "Математика");
+			values.put(mDBH.THEME_COLUMN, "Сложение");
+			values.put(mDBH.TEXT_COLUMN, "A + B = C");
+			db.insert(mDBH.DATABASE_TABLE, null, values);
+
+			mDBH.fd = true;
+		}
 
 		etl = (EditText) findViewById(R.id.editText);
 		ett = (EditText) findViewById(R.id.editText1);
@@ -46,7 +58,7 @@ public class Dopolnenie extends Activity {
 		tv = (TextView) findViewById(R.id.textView3);
 
 		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta");
-		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
+		db = mDBH.getWritableDatabase();
 
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -62,7 +74,7 @@ public class Dopolnenie extends Activity {
 				values.put(DBHelper.THEME_COLUMN, theme);
 				values.put(DBHelper.TEXT_COLUMN, text);
 				// Вставляем данные в таблицу
-				mSqLiteDatabase.insert("uroki", null, values);
+				db.insert("uroki", null, values);
 			}
 		});
 
@@ -71,7 +83,7 @@ public class Dopolnenie extends Activity {
 			public void onClick(View v) {
 			String query = "SELECT * FROM uroki";
 			String les = "", th = "", txt = "";
-			Cursor cursor = mSqLiteDatabase.rawQuery(query, null);
+			Cursor cursor = db.rawQuery(query, null);
 			while (cursor.moveToNext()) {
 				String lesson = cursor.getString(cursor
 						.getColumnIndex(DBHelper.LESSON_COLUMN));
@@ -83,9 +95,9 @@ public class Dopolnenie extends Activity {
 				th = th + theme + " ";
 				txt = txt + text + " ";
 			}
-			etl.setText(" Урок: " + les);
-			ett.setText(" Тема: " + th);
-			etT.setText(" Текст: " + txt);
+			etl.setText("" + les);
+			ett.setText("" + th);
+			etT.setText("" + txt);
 			cursor.close();
 			}
 		});

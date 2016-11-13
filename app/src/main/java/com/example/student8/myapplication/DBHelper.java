@@ -10,11 +10,11 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper{
     // имя базы данных
-    private static final String DATABASE_NAME = "spdatabase.db";
+    public static final String DATABASE_NAME = "spdatabase.db";
     // версия базы данных
     private static final int DATABASE_VERSION = 1;
     // имя таблицы
-    private static final String DATABASE_TABLE = "uroki";
+    public static final String DATABASE_TABLE = "uroki";
     // названия столбцов
     public static final String LESSON_COLUMN = "lesson";
     public static final String THEME_COLUMN = "theme";
@@ -22,7 +22,9 @@ public class DBHelper extends SQLiteOpenHelper{
 
 
     SQLiteDatabase db;
-    private DBHelper mDatabaseHelper;
+    private DBHelper mDBH;
+
+    Boolean fd;
 
     Dopolnenie dp = new Dopolnenie();
 
@@ -49,16 +51,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        // Gets the database in write mode
-        db = mDatabaseHelper.getWritableDatabase();
-        // Создаем объект ContentValues, где имена столбцов ключи,
-        // а информация о госте является значениями ключей
-        ContentValues values = new ContentValues();
-        values.put(LESSON_COLUMN, "Математика");
-        values.put(THEME_COLUMN, "Сложение");
-        values.put(TEXT_COLUMN, "A + B = C");
-
-        long newRowId = db.insert(DATABASE_NAME, null, values);
+        fd = false;
     }
 
     @Override
