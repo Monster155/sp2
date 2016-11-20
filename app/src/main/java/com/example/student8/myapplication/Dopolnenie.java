@@ -20,13 +20,12 @@ import java.sql.Struct;
 
 public class Dopolnenie extends Activity {
 
-	Button btn, btn2;
+	Button btn, btn2, btnDrop;
 	EditText etl, ett, etT;
 	private DBHelper mDBH;
 	private SQLiteDatabase db;
 	TextView tv;
 
-	private static ResultSet rs;
 	String lesson, theme, text;
 
 	@Override
@@ -52,6 +51,7 @@ public class Dopolnenie extends Activity {
 		etT = (EditText) findViewById(R.id.editText2);
 		btn = (Button) findViewById(R.id.button1);
 		btn2 = (Button) findViewById(R.id.button2);
+		btnDrop = (Button) findViewById(R.id.button3);
 		tv = (TextView) findViewById(R.id.textView3);
 
 		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta");
@@ -96,6 +96,13 @@ public class Dopolnenie extends Activity {
 			ett.setText("" + th);
 			etT.setText("" + txt);
 			cursor.close();
+			}
+		});
+
+		btnDrop.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			mDBH.onUpgrade(db, mDBH.DATABASE_VERSION, db.getVersion());
 			}
 		});
 	}

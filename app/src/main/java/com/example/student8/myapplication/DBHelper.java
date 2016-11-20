@@ -12,7 +12,7 @@ public class DBHelper extends SQLiteOpenHelper{
     // имя базы данных
     public static final String DATABASE_NAME = "spdatabase.db";
     // версия базы данных
-    private static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 1;
     // имя таблицы
     public static final String DATABASE_TABLE = "uroki";
     // названия столбцов
@@ -51,7 +51,6 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        fd = false;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class DBHelper extends SQLiteOpenHelper{
         // Запишем в журнал
         Log.w("SQLite", "Обновляемся с версии " + oldVersion + " на версию " + newVersion);
         // Удаляем старую таблицу
-        db.execSQL("DROP TABLE IF IT EXISTS " + DATABASE_TABLE);
+        db.execSQL("DROP TABLE " + DATABASE_TABLE);
         // Создаём новую таблицу
         onCreate(db);
     }
