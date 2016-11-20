@@ -36,7 +36,6 @@ public class Dopolnenie extends Activity {
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 
-		if(mDBH.fd == false) {
 			// Gets the database in write mode
 			db = mDBH.getWritableDatabase();
 			// Создаем объект ContentValues, где имена столбцов ключи,
@@ -47,8 +46,6 @@ public class Dopolnenie extends Activity {
 			values.put(mDBH.TEXT_COLUMN, "A + B = C");
 			db.insert(mDBH.DATABASE_TABLE, null, values);
 
-			mDBH.fd = true;
-		}
 
 		etl = (EditText) findViewById(R.id.editText);
 		ett = (EditText) findViewById(R.id.editText1);
