@@ -54,8 +54,8 @@ public class DBHelper extends SQLiteOpenHelper{
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
         newValues.put(LESSON_COLUMN, lesson);
-        newValues.put(LESSON_COLUMN, theme);
-        newValues.put(LESSON_COLUMN, text);
+        newValues.put(THEME_COLUMN, theme);
+        newValues.put(TEXT_COLUMN, text);
         // Вставьте строку в вашу базу данных.
         db.insert(DATABASE_TABLE, null, newValues);
     }
