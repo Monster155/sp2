@@ -20,14 +20,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String THEME_COLUMN = "theme";
     public static final String TEXT_COLUMN = "text1";
 
-
     SQLiteDatabase db;
     private DBHelper mDBH;
 
-    Boolean fd;
+    String lesson = "Матем", theme = "Синус", text = "sin A";
 
     Dopolnenie dp = new Dopolnenie();
-
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
@@ -51,6 +49,15 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
+
+        // Создайте новую строку со значениями для вставки.
+        ContentValues newValues = new ContentValues();
+        // Задайте значения для каждой строки.
+        newValues.put(LESSON_COLUMN, lesson);
+        newValues.put(LESSON_COLUMN, theme);
+        newValues.put(LESSON_COLUMN, text);
+        // Вставьте строку в вашу базу данных.
+        db.insert(DATABASE_TABLE, null, newValues);
     }
 
     @Override

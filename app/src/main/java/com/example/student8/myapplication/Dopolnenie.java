@@ -35,17 +35,6 @@ public class Dopolnenie extends Activity {
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 
-			// Gets the database in write mode
-			db = mDBH.getWritableDatabase();
-			// Создаем объект ContentValues, где имена столбцов ключи,
-			// а информация о госте является значениями ключей
-			ContentValues values = new ContentValues();
-			values.put(mDBH.LESSON_COLUMN, "Математика");
-			values.put(mDBH.THEME_COLUMN, "Сложение");
-			values.put(mDBH.TEXT_COLUMN, "A + B = C");
-			db.insert(mDBH.DATABASE_TABLE, null, values);
-
-
 		etl = (EditText) findViewById(R.id.editText);
 		ett = (EditText) findViewById(R.id.editText1);
 		etT = (EditText) findViewById(R.id.editText2);
