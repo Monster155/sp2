@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper{
     SQLiteDatabase db;
     private DBHelper mDBH;
 
-    String lesson = "Матем", theme = "Синус", text = "sin A";
+    String lesson, theme, text;
 
     Dopolnenie dp = new Dopolnenie();
 
@@ -49,15 +49,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-
-        // Создайте новую строку со значениями для вставки.
-        ContentValues newValues = new ContentValues();
-        // Задайте значения для каждой строки.
-        newValues.put(LESSON_COLUMN, lesson);
-        newValues.put(THEME_COLUMN, theme);
-        newValues.put(TEXT_COLUMN, text);
-        // Вставьте строку в вашу базу данных.
-        db.insert(DATABASE_TABLE, null, newValues);
+        enter();
     }
 
     @Override
@@ -68,6 +60,20 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE " + DATABASE_TABLE);
         // Создаём новую таблицу
         onCreate(db);
+    }
+
+    public void enter(){
+        lesson = "Математика";
+        theme = "Синус";
+        text = "sin A";
+        // Создайте новую строку со значениями для вставки.
+        ContentValues newValues = new ContentValues();
+        // Задайте значения для каждой строки.
+        newValues.put(LESSON_COLUMN, lesson);
+        newValues.put(THEME_COLUMN, theme);
+        newValues.put(TEXT_COLUMN, text);
+        // Вставьте строку в вашу базу данных.
+        db.insert(DATABASE_TABLE, null, newValues);
     }
 
 }

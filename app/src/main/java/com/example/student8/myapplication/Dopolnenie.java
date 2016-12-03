@@ -8,9 +8,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -25,6 +29,8 @@ public class Dopolnenie extends Activity {
 	private DBHelper mDBH;
 	private SQLiteDatabase db;
 	TextView tv;
+
+	Spinner sp;
 
 	String lesson, theme, text;
 
@@ -42,6 +48,8 @@ public class Dopolnenie extends Activity {
 		btn2 = (Button) findViewById(R.id.button2);
 		btnDrop = (Button) findViewById(R.id.button3);
 		tv = (TextView) findViewById(R.id.textView3);
+
+		sp = (Spinner) findViewById(R.id.spinner1);
 
 		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta");
 		db = mDBH.getWritableDatabase();
@@ -92,6 +100,34 @@ public class Dopolnenie extends Activity {
 			@Override
 			public void onClick(View v) {
 			mDBH.onUpgrade(db, mDBH.DATABASE_VERSION, db.getVersion());
+			}
+		});
+
+		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> parent,
+									   View itemSelected, int selectedItemPosition, long selectedId) {
+
+				String[] choose = getResources().getStringArray(R.array.uroki);
+				String query = "SELECT * FROM uroki WHERE lesson='" + choose[selectedItemPosition] + "'";
+				String les = "", th = "", txt = "";
+				Cursor cursor = db.rawQuery(query, null);
+				while (cursor.moveToNext()) {
+					String lesson = cursor.getString(cursor
+							.getColumnIndex(DBHelper.LESSON_COLUMN));
+					String theme = cursor.getString(cursor
+							.getColumnIndex(DBHelper.THEME_COLUMN));
+					String text = cursor.getString(cursor
+							.getColumnIndex(DBHelper.TEXT_COLUMN));
+					les = les + lesson + " ";
+					th = th + theme + " ";
+					txt = txt + text + " ";
+				}
+				etl.setText("" + les);
+				ett.setText("" + th);
+				etT.setText("" + txt);
+				cursor.close();
+			}
+			public void onNothingSelected(AdapterView<?> parent) {
 			}
 		});
 	}
