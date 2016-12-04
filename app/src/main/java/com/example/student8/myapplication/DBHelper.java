@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+
+import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper{
     // имя базы данных
@@ -22,6 +25,9 @@ public class DBHelper extends SQLiteOpenHelper{
 
     SQLiteDatabase db;
     private DBHelper mDBH;
+
+    HashMap<String, Integer> pas;
+    int array;
 
     String lesson, theme, text;
 
@@ -65,7 +71,15 @@ public class DBHelper extends SQLiteOpenHelper{
     public void enter(){
         lesson = "Математика";
         theme = "Синус";
-        text = "sin A";
+
+   //     array = R.array.matem;
+   //     pas = new HashMap<String, Integer>();
+   //     ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, array,
+   //             android.R.layout.simple_spinner_item);
+   //     String[] choose = getResources().getStringArray(array);
+   //     text = pas.get(choose[selectedItemPosition]);
+   //     choose();
+
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
@@ -76,4 +90,30 @@ public class DBHelper extends SQLiteOpenHelper{
         db.insert(DATABASE_TABLE, null, newValues);
     }
 
+ /*   public void choose(){
+        pas.put("Деепричастие", R.string.Deeprichastie);
+        pas.put("Причастие", R.string.Prichastie);
+        pas.put("Правописание запятых", R.string.Pravopisanie_zapyatyh);
+        pas.put("Исем фигыль", R.string.Isem_figyl);
+        pas.put("Аергыч", R.string.Aergych);
+        pas.put("Исем", R.string.Isem);
+        pas.put("График функции", R.string.Grafik_funkcii);
+        pas.put("Неравенства", R.string.Neravenstva);
+        pas.put("Окружность", R.string.Okrujnost);
+        pas.put("Правление Александра I", R.string.Pravlenie_Aleksandra_I);
+        pas.put("1 Мировая Война", R.string.I_Mirovaya_Voina);
+        pas.put("Отечественная война 1812 года", R.string.Otechestvennaya_voina_1812_goda);
+        pas.put("Past Simple", R.string.Past_Simple);
+        pas.put("Modals", R.string.Modals);
+        pas.put("Conditionals", R.string.Conditionals);
+        pas.put("Теплопроводность", R.string.Teploprovodnost);
+        pas.put("Линзы", R.string.Linzy);
+        pas.put("Электрический ток", R.string.Elektricheskii_tok);
+        pas.put("Окислители", R.string.Okisliteli);
+        pas.put("Соли", R.string.Soli);
+        pas.put("Оксиды", R.string.Oksidy);
+        pas.put("Способы ввода и вывода", R.string.Sposoby_vvoda_i_vyvoda);
+        pas.put("Основные понятия", R.string.Osnovnye_ponyatiya);
+        pas.put("Виды переменных", R.string.Vidy_peremennyh);
+    }*/
 }
