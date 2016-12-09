@@ -150,8 +150,12 @@ public class Urok extends Activity {
 				((TextView) parent.getChildAt(0)).setTextColor(color);
 			    ((TextView) parent.getChildAt(0)).setTextSize(25);
 				String[] choose = getResources().getStringArray(array);
-				int id = pas.get(choose[selectedItemPosition]);
-				tv2.setText(id);
+				if(pas.get(choose[selectedItemPosition]) != null){
+					int id = pas.get(choose[selectedItemPosition]);
+					tv2.setText(id);
+				} else{
+					tv2.setText("Жди дороботки");
+				}
 			}
 
 			public void onNothingSelected(AdapterView<?> parent) {
