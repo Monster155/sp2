@@ -23,16 +23,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String THEME_COLUMN = "theme";
     public static final String TEXT_COLUMN = "text1";
 
-    SQLiteDatabase db;
-    private DBHelper mDBH;
-
-    HashMap<String, Integer> pas;
-    int array;
-
-    String lesson, theme, text;
     Context context;
 
-    Dopolnenie dp = new Dopolnenie();
+    private DBHelper mDBH = new DBHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+    SQLiteDatabase db = mDBH.getWritableDatabase();
+
+    String lesson, theme, text;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
@@ -59,31 +55,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        lesson = "Русский язык";
-        theme = "Деепричастие";
-        text = context.getApplicationContext().getString(R.string.Deeprichastie);
-        enter();
-
-        theme = "Причастие";
-        text = context.getApplicationContext().getString(R.string.Prichastie);
-        enter();
-
-        theme = "Правописание запятых";
-        text = context.getApplicationContext().getString(R.string.Neravenstva);
-        enter();
-
-        lesson = "Татрский язык";
-        theme = "Исем Фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
-        enter();
-
-        theme = "Аергыч";
-        text = context.getApplicationContext().getString(R.string.Aergych);
-        enter();
-
-        theme = "Исем";
-        text = context.getApplicationContext().getString(R.string.Isem);
-        enter();
+        enter(context);
     }
 
     @Override
@@ -96,7 +68,11 @@ public class DBHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void enter(){
+    public void enter(Context context){
+        lesson = "Русский язык";
+        theme = "Деепричастие";
+        text = "Кек";
+
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
