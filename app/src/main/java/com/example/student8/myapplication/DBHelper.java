@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper{
     Context context;
 
     private DBHelper mDBH = new DBHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
-    SQLiteDatabase db = mDBH.getWritableDatabase();
+    private SQLiteDatabase db = mDBH.getWritableDatabase();
 
     String lesson, theme, text;
 
@@ -55,7 +55,10 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        enter(context);
+        lesson = "Русский язык";
+        theme = "Деепричастие";
+        text = context.getApplicationContext().getString(R.string.Deeprichastie);
+        enter();
     }
 
     @Override
@@ -68,11 +71,7 @@ public class DBHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void enter(Context context){
-        lesson = "Русский язык";
-        theme = "Деепричастие";
-        text = "Кек";
-
+    public void enter(){
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
