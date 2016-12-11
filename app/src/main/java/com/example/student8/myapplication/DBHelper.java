@@ -23,12 +23,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String THEME_COLUMN = "theme";
     public static final String TEXT_COLUMN = "text1";
 
-    Context context;
+    private final Context context;
 
-    private DBHelper mDBH = new DBHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
-    private SQLiteDatabase db = mDBH.getWritableDatabase();
+    SQLiteDatabase db;
+    private DBHelper mDBH;
 
-    String lesson, theme, text;
+    public String lesson, theme, text;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
@@ -58,7 +58,58 @@ public class DBHelper extends SQLiteOpenHelper{
         lesson = "Русский язык";
         theme = "Деепричастие";
         text = context.getApplicationContext().getString(R.string.Deeprichastie);
-        enter();
+        enter(db);
+
+        theme = "Причастие";
+        text = context.getApplicationContext().getString(R.string.Prichastie);
+        enter(db);
+
+        theme = "Пунктуация";
+        text = context.getApplicationContext().getString(R.string.Pravopisanie_zapyatyh);
+        enter(db);
+
+        lesson = "Татарский язык";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
+
+        theme = "Аергыч";
+        text = context.getApplicationContext().getString(R.string.Aergych);
+        enter(db);
+
+        theme = "Исем";
+        text = context.getApplicationContext().getString(R.string.Isem);
+        enter(db);
+
+        lesson = "Математика";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
+
+        lesson = "История";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
+
+        lesson = "Английский язык";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
+
+        lesson = "Физика";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
+
+        lesson = "Химия";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
+
+        lesson = "Информатика";
+        theme = "Исем фигыль";
+        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        enter(db);
     }
 
     @Override
@@ -71,7 +122,7 @@ public class DBHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void enter(){
+    public void enter(SQLiteDatabase db){
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
@@ -82,3 +133,4 @@ public class DBHelper extends SQLiteOpenHelper{
         db.insert(DATABASE_TABLE, null, newValues);
     }
 }
+
