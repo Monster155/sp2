@@ -59,56 +59,60 @@ public class DBHelper extends SQLiteOpenHelper{
         theme = "Деепричастие";
         text = context.getApplicationContext().getString(R.string.Deeprichastie);
         enter(db);
-
-        theme = "Причастие";
+      /*  theme = "Причастие";
         text = context.getApplicationContext().getString(R.string.Prichastie);
         enter(db);
-
         theme = "Пунктуация";
         text = context.getApplicationContext().getString(R.string.Pravopisanie_zapyatyh);
-        enter(db);
+        enter(db);*/
+
 
         lesson = "Татарский язык";
         theme = "Исем фигыль";
         text = context.getApplicationContext().getString(R.string.Isem_figyl);
         enter(db);
-
-        theme = "Аергыч";
+      /*  theme = "Аергыч";
         text = context.getApplicationContext().getString(R.string.Aergych);
         enter(db);
-
         theme = "Исем";
         text = context.getApplicationContext().getString(R.string.Isem);
-        enter(db);
+        enter(db);*/
+
 
         lesson = "Математика";
-        theme = "Исем фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        theme = "График функции";
+        text = context.getApplicationContext().getString(R.string.Grafik_funkcii);
         enter(db);
+    /*    theme = "Неравенства";
+        text = context.getApplicationContext().getString(R.string.Neravenstva);
+        enter(db);
+        theme = "Окружность";
+        text = context.getApplicationContext().getString(R.string.Okrujnost);
+        enter(db);*/
 
         lesson = "История";
-        theme = "Исем фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        theme = "Правление Александра 1";
+        text = context.getApplicationContext().getString(R.string.Pravlenie_Aleksandra_I);
         enter(db);
 
         lesson = "Английский язык";
-        theme = "Исем фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        theme = "Past Simple";
+        text = context.getApplicationContext().getString(R.string.Past_Simple);
         enter(db);
 
         lesson = "Физика";
-        theme = "Исем фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        theme = "Теплопроводность";
+        text = context.getApplicationContext().getString(R.string.Teploprovodnost);
         enter(db);
 
         lesson = "Химия";
-        theme = "Исем фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        theme = "Окислители";
+        text = context.getApplicationContext().getString(R.string.Okisliteli);
         enter(db);
 
         lesson = "Информатика";
-        theme = "Исем фигыль";
-        text = context.getApplicationContext().getString(R.string.Isem_figyl);
+        theme = "Способы ввода и вывода";
+        text = context.getApplicationContext().getString(R.string.Sposoby_vvoda_i_vyvoda);
         enter(db);
     }
 
