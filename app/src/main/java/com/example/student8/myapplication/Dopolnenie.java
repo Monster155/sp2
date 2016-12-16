@@ -25,12 +25,15 @@ import java.sql.Struct;
 public class Dopolnenie extends Activity {
 
 	Button btn, btn2, btnDrop;
-	EditText etl, ett, etT;
+	EditText ett, etT;
 	private DBHelper mDBH;
 	private SQLiteDatabase db;
-	TextView tv;
+	TextView tv, tv3;
 
 	Spinner sp;
+
+	int selectedPosition;
+	String[] choose2;
 
 	String lesson, theme, text;
 
@@ -41,7 +44,7 @@ public class Dopolnenie extends Activity {
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 
-		etl = (EditText) findViewById(R.id.editText);
+		tv3 = (TextView) findViewById(R.id.textView);
 		ett = (EditText) findViewById(R.id.editText1);
 		etT = (EditText) findViewById(R.id.editText2);
 		btn = (Button) findViewById(R.id.button1);
@@ -55,11 +58,37 @@ public class Dopolnenie extends Activity {
 
 		db = mDBH.getWritableDatabase();
 
+		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> parent,
+									   View itemSelected, int selectedItemPosition, long selectedId) {
+
+				String[] choose = getResources().getStringArray(R.array.uroki);
+				choose2 = choose;
+				String query = "SELECT * FROM uroki WHERE lesson='" + choose[selectedItemPosition] + "'";
+				String th = "", txt = "";
+				Cursor cursor = db.rawQuery(query, null);
+				while (cursor.moveToNext()) {
+					String theme = cursor.getString(cursor
+							.getColumnIndex(DBHelper.THEME_COLUMN));
+					String text = cursor.getString(cursor
+							.getColumnIndex(DBHelper.TEXT_COLUMN));
+					th = th + theme + " ";
+					txt = txt + text + " ";
+				}
+				ett.setText("" + th);
+				etT.setText("" + txt);
+				cursor.close();
+				selectedPosition = selectedItemPosition;
+			}
+			public void onNothingSelected(AdapterView<?> parent) {
+			}
+		});
+
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// Берем данные из EditText-ов и добавляем в БД
-				lesson = String.valueOf(etl.getText());
+				lesson = choose2[selectedPosition];
 				theme = String.valueOf(ett.getText());
 				text = String.valueOf(etT.getText());
 
@@ -90,7 +119,7 @@ public class Dopolnenie extends Activity {
 				th = th + theme + " ";
 				txt = txt + text + " ";
 			}
-			etl.setText("" + les);
+			tv3.setText("" + les);
 			ett.setText("" + th);
 			etT.setText("" + txt);
 			cursor.close();
@@ -101,34 +130,6 @@ public class Dopolnenie extends Activity {
 			@Override
 			public void onClick(View v) {
 			mDBH.onUpgrade(db, mDBH.DATABASE_VERSION, db.getVersion());
-			}
-		});
-
-		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> parent,
-									   View itemSelected, int selectedItemPosition, long selectedId) {
-
-				String[] choose = getResources().getStringArray(R.array.uroki);
-				String query = "SELECT * FROM uroki WHERE lesson='" + choose[selectedItemPosition] + "'";
-				String les = "", th = "", txt = "";
-				Cursor cursor = db.rawQuery(query, null);
-				while (cursor.moveToNext()) {
-					String lesson = cursor.getString(cursor
-							.getColumnIndex(DBHelper.LESSON_COLUMN));
-					String theme = cursor.getString(cursor
-							.getColumnIndex(DBHelper.THEME_COLUMN));
-					String text = cursor.getString(cursor
-							.getColumnIndex(DBHelper.TEXT_COLUMN));
-					les = les + lesson + " ";
-					th = th + theme + " ";
-					txt = txt + text + " ";
-				}
-				etl.setText("" + les);
-				ett.setText("" + th);
-				etT.setText("" + txt);
-				cursor.close();
-			}
-			public void onNothingSelected(AdapterView<?> parent) {
 			}
 		});
 	}

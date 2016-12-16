@@ -59,7 +59,7 @@ public class Urok extends Activity {
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
 			color = -65536;
-			tv2.setTextColor(R.color.purple);
+			tv2.setTextColor(-1);
 			break;
 		case 2:
 			tv.setText("Татарский язык");
@@ -77,13 +77,13 @@ public class Urok extends Activity {
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
-			color = -16777216;//2131427382;
+			color = -16777216;
 			break;
 		case 5:
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
-			color = -16777216;//2131427373;
+			color = -30700;
 			break;
 		case 6:
 			tv.setText("Физика");
@@ -148,6 +148,7 @@ public class Urok extends Activity {
 				((TextView) parent.getChildAt(0)).setTextColor(color);
 			    ((TextView) parent.getChildAt(0)).setTextSize(25);
 				String[] choose = getResources().getStringArray(array);
+				sp.setBackgroundColor(R.color.purple);
 				if(pas.get(choose[selectedItemPosition]) == null){
 					tv2.setText("Жди дороботки");
 				} else{
