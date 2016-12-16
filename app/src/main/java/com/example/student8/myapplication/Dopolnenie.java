@@ -44,7 +44,7 @@ public class Dopolnenie extends Activity {
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 
-		tv3 = (TextView) findViewById(R.id.textView);
+		tv3 = (TextView) findViewById(R.id.textView1);
 		ett = (EditText) findViewById(R.id.editText1);
 		etT = (EditText) findViewById(R.id.editText2);
 		btn = (Button) findViewById(R.id.button1);
@@ -54,7 +54,7 @@ public class Dopolnenie extends Activity {
 
 		sp = (Spinner) findViewById(R.id.spinner1);
 
-		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta");
+		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta " + R.color.purple + " фиолетовый");
 
 		db = mDBH.getWritableDatabase();
 
