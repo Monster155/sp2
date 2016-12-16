@@ -52,6 +52,7 @@ public class Dopolnenie extends Activity {
 		sp = (Spinner) findViewById(R.id.spinner1);
 
 		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta");
+
 		db = mDBH.getWritableDatabase();
 
 		btn.setOnClickListener(new View.OnClickListener() {

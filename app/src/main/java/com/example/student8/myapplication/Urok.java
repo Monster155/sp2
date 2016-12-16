@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,8 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import static com.example.student8.myapplication.R.id.textView;
 
 public class Urok extends Activity {
 
@@ -62,6 +59,7 @@ public class Urok extends Activity {
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
 			color = -65536;
+			tv2.setTextColor(R.color.purple);
 			break;
 		case 2:
 			tv.setText("Татарский язык");
@@ -79,13 +77,13 @@ public class Urok extends Activity {
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
-			color = 2131427382;
+			color = -16777216;//2131427382;
 			break;
 		case 5:
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
-			color = 2131427373;
+			color = -16777216;//2131427373;
 			break;
 		case 6:
 			tv.setText("Физика");
@@ -150,11 +148,11 @@ public class Urok extends Activity {
 				((TextView) parent.getChildAt(0)).setTextColor(color);
 			    ((TextView) parent.getChildAt(0)).setTextSize(25);
 				String[] choose = getResources().getStringArray(array);
-				if(pas.get(choose[selectedItemPosition]) != null){
+				if(pas.get(choose[selectedItemPosition]) == null){
+					tv2.setText("Жди дороботки");
+				} else{
 					int id = pas.get(choose[selectedItemPosition]);
 					tv2.setText(id);
-				} else{
-					tv2.setText("Жди дороботки");
 				}
 			}
 
