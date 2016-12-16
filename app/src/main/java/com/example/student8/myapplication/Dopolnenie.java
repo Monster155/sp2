@@ -79,6 +79,7 @@ public class Dopolnenie extends Activity {
 				etT.setText("" + txt);
 				cursor.close();
 				selectedPosition = selectedItemPosition;
+				tv3.setText("");
 			}
 			public void onNothingSelected(AdapterView<?> parent) {
 			}
