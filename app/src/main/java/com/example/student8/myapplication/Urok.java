@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +23,11 @@ public class Urok extends Activity {
 	LinearLayout ll;
 	int array, color;
 	HashMap<String, Integer> pas;
+	private DBHelper mDBH;
+	private SQLiteDatabase db;
+
+	String[] choose;
+	String urok;
 
 	public void choose(){
 	    pas.put("Деепричастие", R.string.Deeprichastie);
@@ -55,6 +62,8 @@ public class Urok extends Activity {
 
 		switch (r) {
 		case 1:
+			urok = "Русский язык";
+			choose  = getResources().getStringArray(R.array.russk);
 			tv.setText("Русский язык");
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
@@ -62,6 +71,8 @@ public class Urok extends Activity {
 			tv2.setTextColor(-16777216);
 			break;
 		case 2:
+			urok = "Татарский язык";
+			choose  = getResources().getStringArray(R.array.tatar);
 			tv.setText("Татарский язык");
 			ll.setBackgroundResource(R.drawable.tatar);
 			array = R.array.tatar;
@@ -70,40 +81,64 @@ public class Urok extends Activity {
 			tv2.setTextColor(-30700);
 			break;
 		case 3:
+			urok = "Математика";
+			choose  = getResources().getStringArray(R.array.matem);
 			tv.setText("Математика");
 			ll.setBackgroundResource(R.drawable.matem);
 			array = R.array.matem;
 			color = -16776961;
+			tv.setTextColor(-1);
+			tv2.setTextColor(-65536);
 			break;
 		case 4:
+			urok = "История";
+			choose  = getResources().getStringArray(R.array.istor);
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
 			color = -16711936;
+			tv.setTextColor(-1);
+			tv2.setTextColor(-65536);
 			break;
 		case 5:
+			urok = "Английский язык";
+			choose  = getResources().getStringArray(R.array.angli);
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
 			color = -30700;
+			tv.setTextColor(-1);
+			tv2.setTextColor(-65536);
 			break;
 		case 6:
+			urok = "Физика";
+			choose  = getResources().getStringArray(R.array.fizik);
 			tv.setText("Физика");
 			ll.setBackgroundResource(R.drawable.fizik);
 			array = R.array.fizik;
 			color = -65536;
+			tv.setTextColor(-1);
+			tv2.setTextColor(-65536);
 			break;
 		case 7:
+			urok = "Химия";
+			choose  = getResources().getStringArray(R.array.himik);
 			tv.setText("Химия");
 			ll.setBackgroundResource(R.drawable.himik);
 			array = R.array.himik;
 			color = -256;
+			tv.setTextColor(-1);
+			tv2.setTextColor(-65536);
 			break;
 		case 8:
+			urok = "Информатика";
+			choose  = getResources().getStringArray(R.array.infor);
 			tv.setText("Информатика");
 			ll.setBackgroundResource(R.drawable.infor);
 			array = R.array.infor;
 			color = -16776961;
+			tv.setTextColor(-1);
+			tv2.setTextColor(-65536);
 			break;
 		default:
 			tv.setText("Fatal Error");
@@ -121,12 +156,36 @@ public class Urok extends Activity {
 		}
 	}
 
+	public void choose2(){
+		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
+				String query = "SELECT * FROM uroki WHERE lesson='" + urok + "'" + " AND theme='" + choose[selectedItemPosition] + "'";
+				String print = "";
+				Cursor cursor = db.rawQuery(query, null);
+				while (cursor.moveToNext()) {
+					String theme = cursor.getString(cursor
+							.getColumnIndex(DBHelper.THEME_COLUMN));
+					String text = cursor.getString(cursor
+							.getColumnIndex(DBHelper.TEXT_COLUMN));
+					print = theme + "\n" + text + "\n " + "\n";
+				}
+				tv2.setText(print);
+				cursor.close();
+			}
+			public void onNothingSelected(AdapterView<?> parent) {
+			}
+		});
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.urok);
 
-		file();
+		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
+		db = mDBH.getWritableDatabase();
+
+		//file();
 		pas = new HashMap<String, Integer>();
 		tv = (TextView) findViewById(R.id.textView1);
 		tv.setTextSize(30);
@@ -135,7 +194,7 @@ public class Urok extends Activity {
 		ll = (LinearLayout) findViewById(R.id.LinearLayout);
 		text();
 
-		choose();
+		//choose();
 
 		sp = (Spinner) findViewById(R.id.spinner1);
 
@@ -151,12 +210,13 @@ public class Urok extends Activity {
 			    ((TextView) parent.getChildAt(0)).setTextSize(25);
 				String[] choose = getResources().getStringArray(array);
 				sp.setBackgroundColor(R.color.purple);
-				if(pas.get(choose[selectedItemPosition]) == null){
+				/*if(pas.get(choose[selectedItemPosition]) == null){
 					tv2.setText("Жди дороботки");
 				} else{
 					int id = pas.get(choose[selectedItemPosition]);
 					tv2.setText(id);
-				}
+				}*/
+				choose2();
 			}
 
 			public void onNothingSelected(AdapterView<?> parent) {
