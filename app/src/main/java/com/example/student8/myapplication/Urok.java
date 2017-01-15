@@ -159,17 +159,16 @@ public class Urok extends Activity {
 	public void choose2(){
 		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
-				String query = "SELECT * FROM uroki WHERE lesson='" + urok + "'" + " AND theme='" + choose[selectedItemPosition] + "'";
+				String query = "SELECT * FROM uroki WHERE (lesson='" + urok + "') AND (theme='" + choose[selectedItemPosition] + "')";
 				String print = "";
 				Cursor cursor = db.rawQuery(query, null);
 				while (cursor.moveToNext()) {
-					String theme = cursor.getString(cursor
-							.getColumnIndex(DBHelper.THEME_COLUMN));
 					String text = cursor.getString(cursor
 							.getColumnIndex(DBHelper.TEXT_COLUMN));
-					print = theme + "\n" + text + "\n " + "\n";
+					print = text + "\n" + "\n";
 				}
 				tv2.setText(print);
+				tv2.setText(query);
 				cursor.close();
 			}
 			public void onNothingSelected(AdapterView<?> parent) {
