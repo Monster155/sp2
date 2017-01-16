@@ -1,6 +1,7 @@
 package com.example.student8.myapplication;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,10 +12,12 @@ public class MainActivity extends Activity {
 
 	Button r, t, m, is, a, f, h, in, dop;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
 		r = (Button) findViewById(R.id.buttonR);
 		t = (Button) findViewById(R.id.buttonT);
 		m = (Button) findViewById(R.id.buttonM);
@@ -105,4 +108,6 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
+
+
 }

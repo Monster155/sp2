@@ -25,37 +25,48 @@ public class DBHelper extends SQLiteOpenHelper{
 
     private final Context context;
 
+    Download dl = new Download();
+
     SQLiteDatabase db;
     private DBHelper mDBH;
-
-    public String lesson, theme, text;
+    Enter enter;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
             + " text not null);";
+    private static final String DATABASE_CREATE_FLAG = "create table begin (integer flag);";
 
-    DBHelper(Context context) {
+
+    public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
+        enter = new Enter(context);
     }
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
+        enter = new Enter(context);
     }
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
                     int version, DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);
         this.context = context;
+        enter = new Enter(context);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
+        db.execSQL(DATABASE_CREATE_FLAG);
+
+        enter.enter(0);
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
