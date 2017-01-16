@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -97,7 +98,7 @@ public class Urok extends Activity {
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
 			color = -16711936;
-			tv.setTextColor(-1);
+			tv.setTextColor(2131427383);
 			tv2.setTextColor(-65536);
 			break;
 		case 5:
@@ -107,7 +108,7 @@ public class Urok extends Activity {
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
 			color = -30700;
-			tv.setTextColor(-1);
+			tv.setTextColor(-16711936);
 			tv2.setTextColor(-65536);
 			break;
 		case 6:
@@ -159,7 +160,10 @@ public class Urok extends Activity {
 	public void choose2(){
 		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
-				String query = "SELECT * FROM uroki WHERE (lesson='" + urok + "') AND (theme='" + choose[selectedItemPosition] + "')";
+				((TextView) parent.getChildAt(0)).setTextColor(color);
+				((TextView) parent.getChildAt(0)).setTextSize(25);
+				sp.setBackgroundColor(R.color.purple);
+				String query = "SELECT * FROM uroki WHERE lesson='" + urok + "' AND theme='" + choose[selectedItemPosition] + "'";
 				String print = "";
 				Cursor cursor = db.rawQuery(query, null);
 				while (cursor.moveToNext()) {
@@ -167,8 +171,9 @@ public class Urok extends Activity {
 							.getColumnIndex(DBHelper.TEXT_COLUMN));
 					print = text + "\n" + "\n";
 				}
+				Log.d("Urok after choose2",print);
 				tv2.setText(print);
-				tv2.setText(query);
+				//tv2.setText(query);
 				cursor.close();
 			}
 			public void onNothingSelected(AdapterView<?> parent) {
@@ -201,25 +206,21 @@ public class Urok extends Activity {
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp.setAdapter(adapter);
+		choose2();
 
-		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		/*sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					View itemSelected, int selectedItemPosition, long selectedId) {
-				((TextView) parent.getChildAt(0)).setTextColor(color);
-			    ((TextView) parent.getChildAt(0)).setTextSize(25);
-				String[] choose = getResources().getStringArray(array);
-				sp.setBackgroundColor(R.color.purple);
-				/*if(pas.get(choose[selectedItemPosition]) == null){
+
+				if(pas.get(choose[selectedItemPosition]) == null){
 					tv2.setText("Жди дороботки");
 				} else{
 					int id = pas.get(choose[selectedItemPosition]);
 					tv2.setText(id);
-				}*/
-				choose2();
+				}
 			}
-
 			public void onNothingSelected(AdapterView<?> parent) {
 			}
-		});
+		});*/
 	}
 }
