@@ -12,12 +12,13 @@ public class MainActivity extends Activity {
 
 	Button r, t, m, is, a, f, h, in, dop;
 
+	Download dl = new Download();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		dl.download();
 		r = (Button) findViewById(R.id.buttonR);
 		t = (Button) findViewById(R.id.buttonT);
 		m = (Button) findViewById(R.id.buttonM);

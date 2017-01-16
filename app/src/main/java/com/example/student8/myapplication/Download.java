@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 public class Download {
 
     LessonDAO dao;
-    Enter enter;
     Context context;
     public void download() {
 
