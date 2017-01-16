@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		dl.download();
+		//dl.download();
 		r = (Button) findViewById(R.id.buttonR);
 		t = (Button) findViewById(R.id.buttonT);
 		m = (Button) findViewById(R.id.buttonM);
