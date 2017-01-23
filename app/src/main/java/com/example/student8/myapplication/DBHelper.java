@@ -25,10 +25,6 @@ public class DBHelper extends SQLiteOpenHelper{
 
     private final Context context;
 
-    Download dl = new Download();
-
-    SQLiteDatabase db;
-    private DBHelper mDBH;
     Enter enter;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "

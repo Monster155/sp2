@@ -17,6 +17,7 @@ public class Lesson {
         this.theme = theme;
     }
 
+
     public String getText() {
         return text;
     }
@@ -25,12 +26,12 @@ public class Lesson {
         this.text = text;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getName() {
-
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

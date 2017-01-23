@@ -10,6 +10,10 @@ public class Download {
 
     LessonDAO dao;
     Context context;
+
+    Download(Context c){
+        this.context = c;
+    }
     public void download() {
 
         Enter enter = new Enter(context);
@@ -18,8 +22,9 @@ public class Download {
 
         if (f == 0) {
 
-            dao = new LessonDAO();
+            dao = new LessonDAO(context);
             Lesson l = new Lesson();
+
             l.setName("Русский язык");
             l.setTheme("Деепричастие");
             l.setText("Деепричастие — самостоятельная часть речи или особая форма глагола в русском языке, обозначающая добавочное действие при основном действии. Эта часть речи соединяет в себе признаки глагола (вид, залог, переходность и возвратность) и наречия (неизменяемость, синтаксическая роль обстоятельства). Отвечает на вопросы: что делая? что сделав?");
