@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper{
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
             + " text not null);";
-    private static final String DATABASE_CREATE_FLAG = "create table begin (integer flag);";
+    private static final String DATABASE_CREATE_FLAG = "CREATE TABLE begin ('flag' integer(10));";
 
 
     public DBHelper(Context context) {
@@ -70,6 +70,8 @@ public class DBHelper extends SQLiteOpenHelper{
         Log.w("SQLite", "Обновляемся с версии " + oldVersion + " на версию " + newVersion);
         // Удаляем старую таблицу
         db.execSQL("DROP TABLE " + DATABASE_TABLE);
+        // Удаляем счётчик
+        db.execSQL("DROP TABLE begin");
         // Создаём новую таблицу
         onCreate(db);
     }
