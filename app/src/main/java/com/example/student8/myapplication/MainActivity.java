@@ -11,11 +11,18 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
 	Button r, t, m, is, a, f, h, in, dop;
+	private DBHelper mDBH;
+	private SQLiteDatabase db;
+	Download dl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
+		db = mDBH.getWritableDatabase();
+		dl = new Download(this, db);
+		dl.download();
 		r = (Button) findViewById(R.id.buttonR);
 		t = (Button) findViewById(R.id.buttonT);
 		m = (Button) findViewById(R.id.buttonM);
