@@ -29,19 +29,4 @@ public class LessonDAO {
         // Вставьте строку в вашу базу данных.
         db.insert(DBHelper.DATABASE_TABLE, null, newValues);
     }
-
-    public Lesson get(int id){
-        Lesson lesson = new Lesson();
-        return lesson;
-    }
-
-    public void delete(int id){
-
-    }
-
-    public void update(Lesson lesson){
-
-    }
-
-
 }
