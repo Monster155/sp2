@@ -37,7 +37,7 @@ public class DBHelper extends SQLiteOpenHelper{
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
             + " text not null);";
     private static final String DATABASE_CREATE_FLAG = "create table"
-            + DATABASE_TABLE2 + " (" + FLAG_COLUMN + " text not null);";
+            + DATABASE_TABLE2 + " (" + FLAG_COLUMN + " integer not null);";
 
 
     public DBHelper(Context context) {
@@ -82,7 +82,7 @@ public class DBHelper extends SQLiteOpenHelper{
         // Удаляем старую таблицу
         db.execSQL("DROP TABLE " + DATABASE_TABLE);
         // Удаляем счётчик
-        db.execSQL("DROP TABLE begin");
+        db.execSQL("DROP TABLE check");
         // Создаём новую таблицу
         onCreate(db);
     }

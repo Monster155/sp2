@@ -11,25 +11,29 @@ public class Download {
     LessonDAO dao;
     Context context;
     SQLiteDatabase db;
-    DBHelper DBH;
 
 
     Download(Context c, SQLiteDatabase db){
         this.context = c;
-        DBH = new DBHelper(context, "spdatabase.db", null, 1);
        this.db = db;
     }
 
-    String query = "SELECT * FROM check";
-    Cursor cursor = db.rawQuery(query, null);
-    String flag = cursor.getString(cursor.getColumnIndex(DBHelper.FLAG_COLUMN));
 
 
     public void download() {
 
         Enter enter = new Enter(context);
 
-        int f = Integer.parseInt(flag);
+        String query = "SELECT * FROM " + DBHelper.DATABASE_TABLE2;
+        Cursor cursor = db.rawQuery(query, null);
+        int flag = -1;
+        while (cursor.moveToNext()) {
+            flag = cursor.getInt(cursor
+                    .getColumnIndex(DBHelper.FLAG_COLUMN));
+        }
+        cursor.close();
+
+        int f = flag;
 
         if (f == 0) {
 
