@@ -20,10 +20,10 @@ public class Enter {
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
-        newValues.put("flag", f);
         ff = f;
+        newValues.put("flag", ff);
         // Вставьте строку в вашу базу данных.
-        db.insert("begin", null, newValues);
+        db.insert("check", null, newValues);
     }
     int getFlag(){
         return ff;

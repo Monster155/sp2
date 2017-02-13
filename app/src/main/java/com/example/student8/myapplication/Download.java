@@ -1,24 +1,35 @@
 package com.example.student8.myapplication;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
+import android.widget.AdapterView;
 
 public class Download {
 
     LessonDAO dao;
     Context context;
     SQLiteDatabase db;
+    DBHelper DBH;
+
 
     Download(Context c, SQLiteDatabase db){
         this.context = c;
+        DBH = new DBHelper(context, "spdatabase.db", null, 1);
        this.db = db;
     }
+
+    String query = "SELECT * FROM check";
+    Cursor cursor = db.rawQuery(query, null);
+    String flag = cursor.getString(cursor.getColumnIndex(DBHelper.FLAG_COLUMN));
+
 
     public void download() {
 
         Enter enter = new Enter(context);
 
-        int f = enter.getFlag();
+        int f = Integer.parseInt(flag);
 
         if (f == 0) {
 
@@ -155,7 +166,7 @@ public class Download {
         this.db = db;
     }
 
-    {/*public void enter(SQLiteDatabase db){
+    /*public void enter(SQLiteDatabase db){
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
@@ -254,6 +265,8 @@ public class Download {
     enter(db);
     theme = "Виды переменных";
     text = "Виды переменных";
-    enter(db);*/}
+    enter(db);*/
 
 }
+
+

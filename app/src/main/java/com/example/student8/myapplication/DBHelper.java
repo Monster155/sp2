@@ -18,10 +18,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final int DATABASE_VERSION = 1;
     // имя таблицы
     public static final String DATABASE_TABLE = "uroki";
+    public static final String DATABASE_TABLE2 = "check";
     // названия столбцов
     public static final String LESSON_COLUMN = "lesson";
     public static final String THEME_COLUMN = "theme";
     public static final String TEXT_COLUMN = "text1";
+    public static final String FLAG_COLUMN = "flag";
 
     private final Context context;
 
@@ -34,7 +36,8 @@ public class DBHelper extends SQLiteOpenHelper{
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
             + " text not null);";
-    private static final String DATABASE_CREATE_FLAG = "CREATE TABLE begin (flag integer);";
+    private static final String DATABASE_CREATE_FLAG = "create table"
+            + DATABASE_TABLE2 + " (" + FLAG_COLUMN + " text not null);";
 
 
     public DBHelper(Context context) {
@@ -63,13 +66,14 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
         db.execSQL(DATABASE_CREATE_FLAG);
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.FLAG_COLUMN, "0");
+        db.insert("check", null, values);
         this.db = db;
         dl.database(db);
         enter.enter(0, db);
 
     }
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
