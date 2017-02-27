@@ -9,23 +9,18 @@ import android.database.sqlite.SQLiteDatabase;
  */
 
 public class Enter {
-    int ff;
 
     Context context;
     public Enter(Context c){
         this.context = c;
     }
 
-    void enter(int f, SQLiteDatabase db){
+    void enter(int f){
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.
-        ff = f;
-        newValues.put("flag", ff);
+        newValues.put("flag", f);
         // Вставьте строку в вашу базу данных.
-        db.insert("check", null, newValues);
-    }
-    int getFlag(){
-        return ff;
+        DBScan.db.insert("scan", null, newValues);
     }
 }

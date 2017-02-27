@@ -3,8 +3,6 @@ package com.example.student8.myapplication;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-import android.widget.AdapterView;
 
 public class Download {
 
@@ -22,23 +20,20 @@ public class Download {
 
     public void download() {
 
+        dao = new LessonDAO(context);
+        Lesson l = new Lesson();
+
         Enter enter = new Enter(context);
 
-        String query = "SELECT * FROM " + DBHelper.DATABASE_TABLE2;
+        String query = "SELECT * FROM " + DBScan.DATABASE_TABLE;
+        int flag = 2;
         Cursor cursor = db.rawQuery(query, null);
-        int flag = -1;
         while (cursor.moveToNext()) {
-            flag = cursor.getInt(cursor
-                    .getColumnIndex(DBHelper.FLAG_COLUMN));
+            flag = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DBScan.FLAG_COLUMN)));
         }
         cursor.close();
 
-        int f = flag;
-
-        if (f == 0) {
-
-            dao = new LessonDAO(context);
-            Lesson l = new Lesson();
+        if (flag == 1) {
 
             l.setName("Русский язык");
             l.setTheme("Деепричастие");
@@ -159,10 +154,14 @@ public class Download {
             l.setTheme("Виды переменных");
             l.setText("");
             dao.insert(l);
-            enter.enter(1, db);
+
+            enter.enter(2);
 
         } else {
-
+            l.setName("Русский язык");
+            l.setTheme("Деепричастие");
+            l.setText("Косяк");
+            dao.insert(l);
         }
     }
 

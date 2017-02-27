@@ -1,65 +1,59 @@
 package com.example.student8.myapplication;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 import android.util.Log;
 
 
-public class DBHelper extends SQLiteOpenHelper{
+public class DBScan extends SQLiteOpenHelper{
     // имя базы данных
-    public static final String DATABASE_NAME = "spdatabase.db";
+    public static final String DATABASE_NAME = "spscan.db";
     // версия базы данных
     public static final int DATABASE_VERSION = 1;
     // имя таблицы
-    public static final String DATABASE_TABLE = "uroki";
+    public static final String DATABASE_TABLE = "scan";
     // названия столбцов
-    public static final String LESSON_COLUMN = "lesson";
-    public static final String THEME_COLUMN = "theme";
-    public static final String TEXT_COLUMN = "text1";
+    public static final String FLAG_COLUMN = "flag";
 
     private final Context context;
 
     Enter enter;
     Download dl;
-    SQLiteDatabase db;
+    static SQLiteDatabase db;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
-            + DATABASE_TABLE + " (" + BaseColumns._ID
-            + " integer primary key autoincrement, " + LESSON_COLUMN
-            + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
-            + " text not null);";
+            + DATABASE_TABLE + " (" + FLAG_COLUMN + " text not null);";
 
 
-    public DBHelper(Context context) {
+    public DBScan(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
         enter = new Enter(context);
+        dl = new Download(context, this.db);
     }
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBScan(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
         enter = new Enter(context);
+        dl = new Download(context, this.db);
     }
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
+    public DBScan(Context context, String name, SQLiteDatabase.CursorFactory factory,
                     int version, DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);
         this.context = context;
         enter = new Enter(context);
+        dl = new Download(context, this.db);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        this.db = db;
-        dl.database(DBScan.db);
-        enter.enter(1);
-
+        dl.database(db);
     }
 
     @Override

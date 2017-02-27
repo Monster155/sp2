@@ -12,16 +12,19 @@ public class MainActivity extends Activity {
 
 	Button r, t, m, is, a, f, h, in, dop;
 	private DBHelper mDBH;
-	private SQLiteDatabase db;
+	private DBScan mDBS;
+	private SQLiteDatabase db, dbS;
 	Download dl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mDBS = new DBScan(this, "spscan.db", null, 1);
+		dbS = mDBS.getWritableDatabase();
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 		db = mDBH.getWritableDatabase();
-		dl = new Download(this, db);
+		dl = new Download(this, dbS);
 		dl.download();
 		r = (Button) findViewById(R.id.buttonR);
 		t = (Button) findViewById(R.id.buttonT);
