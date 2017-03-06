@@ -27,11 +27,14 @@ public class Download {
 
         String query = "SELECT * FROM " + DBScan.DATABASE_TABLE;
         int flag = 2;
+        String check = "";
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
-            flag = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DBScan.FLAG_COLUMN)));
+            check = cursor.getString(cursor.getColumnIndex(DBScan.FLAG_COLUMN));
         }
         cursor.close();
+
+        flag = Integer.parseInt(check);
 
         if (flag == 1) {
 
@@ -158,10 +161,10 @@ public class Download {
             enter.enter(2);
 
         } else {
-            l.setName("Русский язык");
+           /* l.setName("Русский язык");
             l.setTheme("Деепричастие");
             l.setText("Косяк");
-            dao.insert(l);
+            dao.insert(l);*/
         }
     }
 

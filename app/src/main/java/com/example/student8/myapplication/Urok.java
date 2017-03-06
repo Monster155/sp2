@@ -30,7 +30,7 @@ public class Urok extends Activity {
 	String[] choose;
 	String urok;
 
-	public void choose(){
+	/*public void choose(){
 	    pas.put("Деепричастие", R.string.Deeprichastie);
 	    pas.put("Причастие", R.string.Prichastie);
 	    pas.put("Правописание запятых", R.string.Pravopisanie_zapyatyh);
@@ -55,7 +55,7 @@ public class Urok extends Activity {
 		pas.put("Способы ввода и вывода", R.string.Sposoby_vvoda_i_vyvoda);
 		pas.put("Основные понятия", R.string.Osnovnye_ponyatiya);
 		pas.put("Виды переменных", R.string.Vidy_peremennyh);
-	}
+	}*/
 
 	public void text() {
 		int r = getIntent().getIntExtra("k", 0);
@@ -69,7 +69,7 @@ public class Urok extends Activity {
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
 			color = -65536;
-			tv2.setTextColor(-16777216);
+			tv2.setTextColor(-16711936);
 			break;
 		case 2:
 			urok = "Татарский язык";
@@ -147,7 +147,7 @@ public class Urok extends Activity {
 		}
 	}
 
-	public void file() {
+	/*public void file() {
 		try {
 			Scanner sc = new Scanner(
 					new File("/home/student/Рабочий стол/text"));
@@ -155,7 +155,7 @@ public class Urok extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	public void choose2(){
 		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

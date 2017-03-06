@@ -57,7 +57,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
         this.db = db;
-        dl.database(DBScan.db);
+        //dl.database(DBScan.db);
         enter.enter(1);
 
     }

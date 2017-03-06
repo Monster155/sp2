@@ -11,9 +11,9 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
 	Button r, t, m, is, a, f, h, in, dop;
-	private DBHelper mDBH;
 	private DBScan mDBS;
-	private SQLiteDatabase db, dbS;
+	private DBHelper mDBH;
+	private SQLiteDatabase dbS, db;
 	Download dl;
 
 	@Override
