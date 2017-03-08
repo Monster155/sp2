@@ -19,7 +19,8 @@ public class Dopolnenie extends Activity {
 	Button btn, btn2, btnDrop;
 	EditText ett, etT;
 	private DBHelper mDBH;
-	private SQLiteDatabase db;
+	private DBScan mDBS;
+	private SQLiteDatabase db, dbS;
 	TextView tv, tv3;
 
 	Spinner sp;
@@ -35,6 +36,7 @@ public class Dopolnenie extends Activity {
 		setContentView(R.layout.dopolnenie);
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
+		mDBS = new DBScan(this, "spscan.db", null, 1);
 
 		tv3 = (TextView) findViewById(R.id.textView1);
 		ett = (EditText) findViewById(R.id.editText1);
@@ -49,6 +51,7 @@ public class Dopolnenie extends Activity {
 		tv.setText(Color.BLACK + " черный " + Color.WHITE + " белый " + Color.BLUE + " синий " + Color.RED + " красный " + Color.GREEN + " зеленый " + Color.YELLOW + " желтый " + Color.GRAY + " gray " + Color.CYAN + " cyan " + Color.MAGENTA + " magenta " + R.color.purple + " фиолетовый");
 
 		db = mDBH.getWritableDatabase();
+		dbS = mDBS.getWritableDatabase();
 
 		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
@@ -123,6 +126,7 @@ public class Dopolnenie extends Activity {
 			@Override
 			public void onClick(View v) {
 			mDBH.onUpgrade(db, mDBH.DATABASE_VERSION, db.getVersion());
+			mDBS.onUpgrade(dbS, mDBS.DATABASE_VERSION, dbS.getVersion());
 			}
 		});
 	}

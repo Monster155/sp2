@@ -8,57 +8,57 @@
     <string-array name="russk">
         <item>Деепричастие</item>
 		<item>Причастие</item>
-        <item>Правописание запятых</item>
-		<item>(Это лишь beta версия №3.3)</item>
+        <item>Пунктуация</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
 
     <string-array name="tatar">
         <item>Исем фигыль</item>
 		<item>Аергыч</item>
         <item>Исем</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="matem">
         <item>График функции</item>
 		<item>Неравенства</item>
         <item>Окружность</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="istor">
         <item>Правление Александра 1</item>
-		<item>1 мировая война</item>
+		<item>1 Мировая Война</item>
         <item>Отечественная война 1812 года</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="angli">
         <item>Past Simple</item>
 		<item>Modals</item>
         <item>Conditionals</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="fizik">
         <item>Теплопроводность</item>
 		<item>Линзы</item>
         <item>Электрический ток</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="himik">
         <item>Окислители</item>
 		<item>Соли</item>
         <item>Оксиды</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="infor">
         <item>Способы ввода и вывода</item>
 		<item>Основные понятия</item>
         <item>Виды переменных</item>
-		<item>(Это лишь beta версия №3.3)</item>
+		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
    	<string-array name="uroki">
