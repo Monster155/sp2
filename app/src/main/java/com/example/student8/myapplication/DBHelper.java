@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper{
     Download dl;
     SQLiteDatabase db;
 
-    private static final String DATABASE_CREATE_SCRIPT = "create table "
+    public static final String DATABASE_CREATE_SCRIPT = "create table "
             + DATABASE_TABLE + " (" + BaseColumns._ID
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN

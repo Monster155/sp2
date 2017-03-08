@@ -5,16 +5,22 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
-	Button r, t, m, is, a, f, h, in, dop;
+	Button r, t, m, is, a, f, h, in;
+	ImageButton set;
 	private DBScan mDBS;
 	private DBHelper mDBH;
 	private SQLiteDatabase dbS, db;
 	Download dl;
+	boolean but;
+	KeyEvent event;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +39,8 @@ public class MainActivity extends Activity {
 		a = (Button) findViewById(R.id.buttonA);
 		f = (Button) findViewById(R.id.buttonF);
 		h = (Button) findViewById(R.id.buttonH);
+		set = (ImageButton) findViewById(R.id.imageButton);
 		in = (Button) findViewById(R.id.buttonIn);
-		dop = (Button) findViewById(R.id.button1);
 
 		r.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -107,15 +113,15 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		
-		dop.setOnClickListener(new View.OnClickListener() {
+
+		set.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Dopolnenie.class);
+				Intent intent = new Intent(MainActivity.this, Setting.class);
+				intent.putExtra("k", 8);
 				startActivity(intent);
 			}
 		});
 	}
-
 
 }
