@@ -20,6 +20,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String LESSON_COLUMN = "lesson";
     public static final String THEME_COLUMN = "theme";
     public static final String TEXT_COLUMN = "text1";
+    public static final String CLASS_COLUMN = "class";
 
     private final Context context;
 
@@ -31,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper{
             + DATABASE_TABLE + " (" + BaseColumns._ID
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
-            + " text not null);";
+            + " text not null, " + CLASS_COLUMN + "integer);";
 
 
     public DBHelper(Context context) {
@@ -58,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL(DATABASE_CREATE_SCRIPT);
         this.db = db;
         //dl.database(DBScan.db);
-        enter.enter(1);
+        enter.mCounter = 1;
 
     }
 

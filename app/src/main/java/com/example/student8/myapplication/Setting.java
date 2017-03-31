@@ -47,13 +47,27 @@ public class Setting extends Activity {
                                         dialog.cancel();
                                         db.execSQL("DROP TABLE uroki");
                                         db.execSQL(mDBH.DATABASE_CREATE_SCRIPT);
-                                        enter.enter(1);
-                                        dl = new Download(context, DBScan.db);
+                                        enter.mCounter = 1;
+                                        dl = new Download(context/*, DBScan.db*/);
                                         dl.download();                                    }
                                 }
                         );
                 AlertDialog alert = builder.create();
                 alert.show();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Setting.this);
+                builder.setTitle("")
+                        .setItems(R.array.classes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // The 'which' argument contains the index position
+                                // of the selected item
+                            }
+                        });
             }
         });
     }

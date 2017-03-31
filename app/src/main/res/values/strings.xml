@@ -9,56 +9,48 @@
         <item>Деепричастие</item>
 		<item>Причастие</item>
         <item>Пунктуация</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
 
     <string-array name="tatar">
         <item>Исем фигыль</item>
 		<item>Аергыч</item>
         <item>Исем</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="matem">
         <item>График функции</item>
 		<item>Неравенства</item>
         <item>Окружность</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="istor">
         <item>Правление Александра 1</item>
 		<item>1 Мировая Война</item>
         <item>Отечественная война 1812 года</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="angli">
         <item>Past Simple</item>
 		<item>Modals</item>
         <item>Conditionals</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="fizik">
         <item>Теплопроводность</item>
 		<item>Линзы</item>
         <item>Электрический ток</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="himik">
         <item>Окислители</item>
 		<item>Соли</item>
         <item>Оксиды</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
     <string-array name="infor">
         <item>Способы ввода и вывода</item>
 		<item>Основные понятия</item>
         <item>Виды переменных</item>
-		<item>Это alpha версия №5.X(Я сбился со счёта)</item>
     </string-array>
     
    	<string-array name="uroki">
@@ -70,5 +62,19 @@
         <item>Физика</item>
         <item>Химия</item>
         <item>Информатика</item>
+    </string-array>
+
+    <string-array name="classes">
+        <item>1 класс</item>
+        <item>2 класс</item>
+        <item>3 класс</item>
+        <item>4 класс</item>
+        <item>5 класс</item>
+        <item>6 класс</item>
+        <item>7 класс</item>
+        <item>8 класс</item>
+        <item>9 класс</item>
+        <item>10 класс</item>
+        <item>11 класс</item>
     </string-array>
 </resources>

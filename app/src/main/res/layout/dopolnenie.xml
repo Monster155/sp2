@@ -47,23 +47,26 @@
                     android:text="Сохранить"
                     android:layout_alignParentTop="true" />
 
-                <Button
+                <!--<Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Тест"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/button1"
-                    android:layout_toEndOf="@+id/button1" />
+                    android:layout_toEndOf="@+id/button1" />-->
 
                 <Button
-                    android:text="Очистить БД"
+                    android:text="Вернуть\nпервоначальный\nданные"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/button3"
+                    android:textAlignment="center"
                     android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/button2"
-                    android:layout_toEndOf="@+id/button2" />
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="45dp"
+                    android:layout_marginEnd="45dp" />
             </RelativeLayout>
 
             <TextView

@@ -26,6 +26,7 @@ public class LessonDAO {
         newValues.put(DBHelper.LESSON_COLUMN, lesson.getName());
         newValues.put(DBHelper.THEME_COLUMN, lesson.getTheme());
         newValues.put(DBHelper.TEXT_COLUMN, lesson.getText());
+        newValues.put(DBHelper.CLASS_COLUMN, lesson.getClasses());
         // Вставьте строку в вашу базу данных.
         db.insert(DBHelper.DATABASE_TABLE, null, newValues);
     }

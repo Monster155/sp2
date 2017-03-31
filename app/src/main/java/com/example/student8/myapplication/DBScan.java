@@ -31,14 +31,14 @@ public class DBScan extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
         enter = new Enter(context);
-        dl = new Download(context, this.db);
+        dl = new Download(context/*, this.db*/);
     }
 
     public DBScan(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
         enter = new Enter(context);
-        dl = new Download(context, this.db);
+        dl = new Download(context/*, this.db*/);
     }
 
     public DBScan(Context context, String name, SQLiteDatabase.CursorFactory factory,
@@ -46,14 +46,14 @@ public class DBScan extends SQLiteOpenHelper{
         super(context, name, factory, version, errorHandler);
         this.context = context;
         enter = new Enter(context);
-        dl = new Download(context, this.db);
+        dl = new Download(context/*, this.db*/);
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCRIPT);
-        dl.database(db);
+        //dl.database(db);
     }
 
     @Override

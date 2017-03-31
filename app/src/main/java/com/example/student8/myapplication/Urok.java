@@ -26,9 +26,10 @@ public class Urok extends Activity {
 	HashMap<String, Integer> pas;
 	private DBHelper mDBH;
 	private SQLiteDatabase db;
+	public int classes = 9;
 
 	String[] choose;
-	String urok;
+	String urok, query = "SELECT * FORM uroki WHERE lesson='";
 
 	/*public void choose(){
 	    pas.put("Деепричастие", R.string.Deeprichastie);
@@ -64,7 +65,8 @@ public class Urok extends Activity {
 		switch (r) {
 		case 1:
 			urok = "Русский язык";
-			choose  = getResources().getStringArray(R.array.russk);
+			query = query + "Русский язык'";
+			//choose  = getResources().getStringArray(R.array.russk);
 			tv.setText("Русский язык");
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
@@ -73,7 +75,8 @@ public class Urok extends Activity {
 			break;
 		case 2:
 			urok = "Татарский язык";
-			choose  = getResources().getStringArray(R.array.tatar);
+			query = query + "Татарский язык'";
+			//choose  = getResources().getStringArray(R.array.tatar);
 			tv.setText("Татарский язык");
 			ll.setBackgroundResource(R.drawable.tatar);
 			array = R.array.tatar;
@@ -83,7 +86,8 @@ public class Urok extends Activity {
 			break;
 		case 3:
 			urok = "Математика";
-			choose  = getResources().getStringArray(R.array.matem);
+			query = query + "Математика'";
+			//choose  = getResources().getStringArray(R.array.matem);
 			tv.setText("Математика");
 			ll.setBackgroundResource(R.drawable.matem);
 			array = R.array.matem;
@@ -93,7 +97,8 @@ public class Urok extends Activity {
 			break;
 		case 4:
 			urok = "История";
-			choose  = getResources().getStringArray(R.array.istor);
+			query = query + "История'";
+			//choose  = getResources().getStringArray(R.array.istor);
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
@@ -103,7 +108,8 @@ public class Urok extends Activity {
 			break;
 		case 5:
 			urok = "Английский язык";
-			choose  = getResources().getStringArray(R.array.angli);
+			query = query + "Английский язык'";
+			//choose  = getResources().getStringArray(R.array.angli);
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
@@ -113,7 +119,8 @@ public class Urok extends Activity {
 			break;
 		case 6:
 			urok = "Физика";
-			choose  = getResources().getStringArray(R.array.fizik);
+			query = query + "Физика'";
+			//choose  = getResources().getStringArray(R.array.fizik);
 			tv.setText("Физика");
 			ll.setBackgroundResource(R.drawable.fizik);
 			array = R.array.fizik;
@@ -123,7 +130,8 @@ public class Urok extends Activity {
 			break;
 		case 7:
 			urok = "Химия";
-			choose  = getResources().getStringArray(R.array.himik);
+			query = query + "Химия'";
+			//choose  = getResources().getStringArray(R.array.himik);
 			tv.setText("Химия");
 			ll.setBackgroundResource(R.drawable.himik);
 			array = R.array.himik;
@@ -163,7 +171,7 @@ public class Urok extends Activity {
 				((TextView) parent.getChildAt(0)).setTextColor(color);
 				((TextView) parent.getChildAt(0)).setTextSize(25);
 				sp.setBackgroundColor(R.color.purple);
-				String query = "SELECT * FROM uroki WHERE lesson='" + urok + "' AND theme='" + choose[selectedItemPosition] + "'";
+				String query = "SELECT * FROM uroki WHERE (lesson='" + urok + "') AND (theme='" + choose[selectedItemPosition] + "') ";
 				String print = "";
 				Cursor cursor = db.rawQuery(query, null);
 				while (cursor.moveToNext()) {
