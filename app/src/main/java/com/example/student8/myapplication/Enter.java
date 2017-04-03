@@ -19,8 +19,7 @@ public class Enter extends Activity {
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCES_COUNTER = "counter";
     private SharedPreferences mSettings;
-    public int mCounter;
-
+    public static int mCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -41,13 +41,14 @@ public class Setting extends Activity {
                                     }
                                 }
                         )
-                        .setNegativeButton("Да",
+                        .setPositiveButton("Да",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
                                         db.execSQL("DROP TABLE uroki");
-                                        db.execSQL(mDBH.DATABASE_CREATE_SCRIPT);
-                                        enter.mCounter = 1;
+                                        mDBH.onCreate(db);
+                                        //db.execSQL(mDBH.DATABASE_CREATE_SCRIPT);
+                                        //enter.mCounter = 1;
                                         dl = new Download(context/*, DBScan.db*/);
                                         dl.download();                                    }
                                 }
@@ -61,13 +62,16 @@ public class Setting extends Activity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Setting.this);
-                builder.setTitle("")
+                builder.setTitle("Выберети класс")
                         .setItems(R.array.classes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // The 'which' argument contains the index position
                                 // of the selected item
+
                             }
                         });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }
