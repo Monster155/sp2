@@ -8,12 +8,11 @@ public class Download {
 
     LessonDAO dao;
     Context context;
-    //SQLiteDatabase db;
+    SQLiteDatabase db = DBScan.db;
 
 
-    Download(Context c/*, SQLiteDatabase db*/){
+    Download(Context c){
         this.context = c;
-       //this.db = db;
     }
 
 
@@ -24,19 +23,16 @@ public class Download {
         Lesson l = new Lesson();
 
         Enter enter = new Enter(context);
+        int count = 0;
 
-        /*String query = "SELECT * FROM " + DBScan.DATABASE_TABLE;
-        int flag;
-        String check = "";
+        String query = "SELECT * FROM " + DBScan.DATABASE_TABLE;
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
-            check = cursor.getString(cursor.getColumnIndex(DBScan.FLAG_COLUMN));
+            count = cursor.getInt(cursor.getColumnIndex(DBScan.FLAG_COLUMN));
         }
         cursor.close();
 
-        flag = Integer.parseInt(check);*/
-
-        if (enter.mCounter == 1) {
+        if (count == 1) {
 
             l.setName("Русский язык");
             l.setTheme("Деепричастие");
@@ -182,7 +178,7 @@ public class Download {
             l.setClasses(9);
             dao.insert(l);
 
-            enter.mCounter = 2;
+            enter.enter(2);
 
         } else {
            /* l.setName("Русский язык");

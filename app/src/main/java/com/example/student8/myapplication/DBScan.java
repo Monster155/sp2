@@ -24,7 +24,7 @@ public class DBScan extends SQLiteOpenHelper{
     static SQLiteDatabase db;
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
-            + DATABASE_TABLE + " (" + FLAG_COLUMN + " text not null);";
+            + DATABASE_TABLE + " (" + FLAG_COLUMN + " integer not null);";
 
 
     public DBScan(Context context) {

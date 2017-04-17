@@ -29,7 +29,7 @@ public class Urok extends Activity {
 	public int classes = 9;
 
 	String[] choose;
-	String urok, query = "SELECT * FORM uroki WHERE lesson='";
+	String urok;
 
 	/*public void choose(){
 	    pas.put("Деепричастие", R.string.Deeprichastie);
@@ -65,8 +65,7 @@ public class Urok extends Activity {
 		switch (r) {
 		case 1:
 			urok = "Русский язык";
-			query = query + "Русский язык'";
-			//choose  = getResources().getStringArray(R.array.russk);
+			choose  = getResources().getStringArray(R.array.russk);
 			tv.setText("Русский язык");
 			ll.setBackgroundResource(R.drawable.russk);
 			array = R.array.russk;
@@ -75,8 +74,7 @@ public class Urok extends Activity {
 			break;
 		case 2:
 			urok = "Татарский язык";
-			query = query + "Татарский язык'";
-			//choose  = getResources().getStringArray(R.array.tatar);
+			choose  = getResources().getStringArray(R.array.tatar);
 			tv.setText("Татарский язык");
 			ll.setBackgroundResource(R.drawable.tatar);
 			array = R.array.tatar;
@@ -86,8 +84,7 @@ public class Urok extends Activity {
 			break;
 		case 3:
 			urok = "Математика";
-			query = query + "Математика'";
-			//choose  = getResources().getStringArray(R.array.matem);
+			choose  = getResources().getStringArray(R.array.matem);
 			tv.setText("Математика");
 			ll.setBackgroundResource(R.drawable.matem);
 			array = R.array.matem;
@@ -97,8 +94,7 @@ public class Urok extends Activity {
 			break;
 		case 4:
 			urok = "История";
-			query = query + "История'";
-			//choose  = getResources().getStringArray(R.array.istor);
+			choose  = getResources().getStringArray(R.array.istor);
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
 			array = R.array.istor;
@@ -108,8 +104,7 @@ public class Urok extends Activity {
 			break;
 		case 5:
 			urok = "Английский язык";
-			query = query + "Английский язык'";
-			//choose  = getResources().getStringArray(R.array.angli);
+			choose  = getResources().getStringArray(R.array.angli);
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
 			array = R.array.angli;
@@ -119,8 +114,7 @@ public class Urok extends Activity {
 			break;
 		case 6:
 			urok = "Физика";
-			query = query + "Физика'";
-			//choose  = getResources().getStringArray(R.array.fizik);
+			choose  = getResources().getStringArray(R.array.fizik);
 			tv.setText("Физика");
 			ll.setBackgroundResource(R.drawable.fizik);
 			array = R.array.fizik;
@@ -130,8 +124,7 @@ public class Urok extends Activity {
 			break;
 		case 7:
 			urok = "Химия";
-			query = query + "Химия'";
-			//choose  = getResources().getStringArray(R.array.himik);
+			choose  = getResources().getStringArray(R.array.himik);
 			tv.setText("Химия");
 			ll.setBackgroundResource(R.drawable.himik);
 			array = R.array.himik;

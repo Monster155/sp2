@@ -59,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL(DATABASE_CREATE_SCRIPT);
         this.db = db;
         //dl.database(DBScan.db);
-        enter.mCounter = 1;
+        enter.enter(1);
 
     }
 

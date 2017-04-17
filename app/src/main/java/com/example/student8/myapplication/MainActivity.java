@@ -24,11 +24,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		//mDBS = new DBScan(this, "spscan.db", null, 1);
-		//dbS = mDBS.getWritableDatabase();
+		mDBS = new DBScan(this, "spscan.db", null, 1);
+		dbS = mDBS.getWritableDatabase();
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 		db = mDBH.getWritableDatabase();
-		dl = new Download(this/*, dbS*/);
+		dl = new Download(this);
 		dl.download();
 		r = (Button) findViewById(R.id.buttonR);
 		t = (Button) findViewById(R.id.buttonT);
