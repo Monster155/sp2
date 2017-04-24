@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper{
             + DATABASE_TABLE + " (" + BaseColumns._ID
             + " integer primary key autoincrement, " + LESSON_COLUMN
             + " text not null, " + THEME_COLUMN + " text not null, " + TEXT_COLUMN
-            + " text not null, " + CLASS_COLUMN + "integer);";
+            + " text not null, " + CLASS_COLUMN + " integer not null);";
 
 
     public DBHelper(Context context) {

@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
 	private DBScan mDBS;
 	private DBHelper mDBH;
 	private SQLiteDatabase dbS, db;
+	Enter enter;
 	Download dl;
 
 	@Override

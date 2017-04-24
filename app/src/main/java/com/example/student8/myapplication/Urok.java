@@ -164,7 +164,7 @@ public class Urok extends Activity {
 				((TextView) parent.getChildAt(0)).setTextColor(color);
 				((TextView) parent.getChildAt(0)).setTextSize(25);
 				sp.setBackgroundColor(R.color.purple);
-				String query = "SELECT * FROM uroki WHERE lesson='" + urok + "' AND theme='" + choose[selectedItemPosition] + "'";
+				String query = "SELECT * FROM uroki WHERE lesson='" + urok + "' AND theme='" + choose[selectedItemPosition] + "' AND class='" + classes + "'";
 				String print = "";
 				Cursor cursor = db.rawQuery(query, null);
 				while (cursor.moveToNext()) {

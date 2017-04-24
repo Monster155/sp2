@@ -23,6 +23,7 @@ public class Enter extends Activity {
     void enter(int f){
         mDBS = new DBScan(context, "spscan.db", null, 1);
         dbS = mDBS.getWritableDatabase();
+        dbS.delete("scan", null, null);
         // Создайте новую строку со значениями для вставки.
         ContentValues newValues = new ContentValues();
         // Задайте значения для каждой строки.

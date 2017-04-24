@@ -8,8 +8,9 @@ public class Download {
 
     LessonDAO dao;
     Context context;
-    SQLiteDatabase db = DBScan.db;
 
+    private DBScan mDBS;
+    private SQLiteDatabase dbS;
 
     Download(Context c){
         this.context = c;
@@ -19,6 +20,9 @@ public class Download {
 
     public void download() {
 
+        mDBS = new DBScan(context, "spscan.db", null, 1);
+        dbS = mDBS.getWritableDatabase();
+
         dao = new LessonDAO(context);
         Lesson l = new Lesson();
 
@@ -26,7 +30,7 @@ public class Download {
         int count = 0;
 
         String query = "SELECT * FROM " + DBScan.DATABASE_TABLE;
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor cursor = dbS.rawQuery(query, null);
         while (cursor.moveToNext()) {
             count = cursor.getInt(cursor.getColumnIndex(DBScan.FLAG_COLUMN));
         }
