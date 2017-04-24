@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		mDBS = new DBScan(this, "spscan.db", null, 1);
 		dbS = mDBS.getWritableDatabase();
+		dbS.close();
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 		db = mDBH.getWritableDatabase();
 		dl = new Download(this);

@@ -25,8 +25,9 @@ public class Urok extends Activity {
 	int array, color;
 	HashMap<String, Integer> pas;
 	private DBHelper mDBH;
-	private SQLiteDatabase db;
-	public int classes = 9;
+	private DBClass mDBC;
+	private SQLiteDatabase db, dbC;
+	int classes;
 
 	String[] choose;
 	String urok;
@@ -189,6 +190,16 @@ public class Urok extends Activity {
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 		db = mDBH.getWritableDatabase();
+
+		mDBC = new DBClass(this, "spclass.db", null, 1);
+		dbC = mDBC.getWritableDatabase();
+
+		String query = "SELECT * FROM " + DBClass.DATABASE_TABLE;
+		Cursor cursor = dbC.rawQuery(query, null);
+		while (cursor.moveToNext()) {
+			classes = cursor.getInt(cursor.getColumnIndex(DBClass.CLASS_COLUMN));
+		}
+		cursor.close();
 
 		//file();
 		pas = new HashMap<String, Integer>();

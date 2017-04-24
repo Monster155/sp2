@@ -1,5 +1,6 @@
 package com.example.student8.myapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +11,8 @@ public class Download {
     Context context;
 
     private DBScan mDBS;
-    private SQLiteDatabase dbS;
+    private DBClass mDBC;
+    private SQLiteDatabase dbS, dbC;
 
     Download(Context c){
         this.context = c;
@@ -22,6 +24,9 @@ public class Download {
 
         mDBS = new DBScan(context, "spscan.db", null, 1);
         dbS = mDBS.getWritableDatabase();
+
+        mDBC = new DBClass(context, "spclass.db", null, 1);
+        dbC = mDBC.getWritableDatabase();
 
         dao = new LessonDAO(context);
         Lesson l = new Lesson();
@@ -183,6 +188,14 @@ public class Download {
             dao.insert(l);
 
             enter.enter(2);
+
+
+            // Создайте новую строку со значениями для вставки.
+            ContentValues newValues = new ContentValues();
+            // Задайте значения для каждой строки.
+            newValues.put("class", 9);
+            // Вставьте строку в вашу базу данных.
+            dbC.insert("class", null, newValues);
 
         } else {
            /* l.setName("Русский язык");

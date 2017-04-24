@@ -2,8 +2,10 @@ package com.example.student8.myapplication;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +16,14 @@ public class Setting extends Activity {
 
     Button btn, btn2;
     private DBHelper mDBH;
-    private SQLiteDatabase db;
+    private DBClass mDBC;
+    private SQLiteDatabase db, dbC;
     Download dl;
     Context context;
     Enter enter;
     TextView tv;
-    Urok urok;
+    int classes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,17 @@ public class Setting extends Activity {
 
         mDBH = new DBHelper(this, "spdatabase.db", null, 1);
         db = mDBH.getWritableDatabase();
+
+        mDBC = new DBClass(this, "spclass.db", null, 1);
+        dbC = mDBC.getWritableDatabase();
+
+        String query = "SELECT * FROM " + DBClass.DATABASE_TABLE;
+        Cursor cursor = dbC.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            classes = cursor.getInt(cursor.getColumnIndex(DBClass.CLASS_COLUMN));
+        }
+        tv.setText("Cейчас выбран класс №" + classes);
+        cursor.close();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +86,13 @@ public class Setting extends Activity {
                                 // of the selected item
                                 which++;
                                 tv.setText("Cейчас выбран класс №" + which);
-                                urok.classes = which;
+                                dbC.delete("class", null, null);
+                                // Создайте новую строку со значениями для вставки.
+                                ContentValues newValues = new ContentValues();
+                                // Задайте значения для каждой строки.
+                                newValues.put("class", which);
+                                // Вставьте строку в вашу базу данных.
+                                dbC.insert("class", null, newValues);
                                 which--;
                             }
                         });
