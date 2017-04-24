@@ -47,7 +47,7 @@ public class Setting extends Activity {
         tv.setText("Cейчас выбран класс №" + classes);
         cursor.close();
 
-        btn.setOnClickListener(new View.OnClickListener() {
+       /* btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Setting.this);
@@ -66,14 +66,14 @@ public class Setting extends Activity {
                                         db.delete("uroki", null, null);
                                         enter = new Enter(context);
                                         enter.enter(1);
-                                        dl = new Download(context/*, DBScan.db*/);
+                                        dl = new Download(context);
                                         dl.download();                                    }
                                 }
                         );
                 AlertDialog alert = builder.create();
                 alert.show();
             }
-        });
+        });*/
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
