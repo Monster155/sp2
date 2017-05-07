@@ -29,7 +29,7 @@ public class Urok extends Activity {
 	private SQLiteDatabase db, dbC;
 	int classes;
 
-	String[] choose;
+	String[] choose = new String[123];
 	String urok;
 
 	/*public void choose(){
@@ -66,79 +66,79 @@ public class Urok extends Activity {
 		switch (r) {
 		case 1:
 			urok = "Русский язык";
-			choose  = getResources().getStringArray(R.array.russk);
+			//choose  = getResources().getStringArray(R.array.russk);
 			tv.setText("Русский язык");
 			ll.setBackgroundResource(R.drawable.russk);
-			array = R.array.russk;
+			//array = R.array.russk;
 			color = -65536;
 			tv2.setTextColor(-16711936);
 			break;
 		case 2:
 			urok = "Татарский язык";
-			choose  = getResources().getStringArray(R.array.tatar);
+			//choose  = getResources().getStringArray(R.array.tatar);
 			tv.setText("Татарский язык");
 			ll.setBackgroundResource(R.drawable.tatar);
-			array = R.array.tatar;
+			//array = R.array.tatar;
 			color = -16711936;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-30700);
 			break;
 		case 3:
 			urok = "Математика";
-			choose  = getResources().getStringArray(R.array.matem);
+			//choose  = getResources().getStringArray(R.array.matem);
 			tv.setText("Математика");
 			ll.setBackgroundResource(R.drawable.matem);
-			array = R.array.matem;
+			//array = R.array.matem;
 			color = -16776961;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
 			break;
 		case 4:
 			urok = "История";
-			choose  = getResources().getStringArray(R.array.istor);
+			//choose  = getResources().getStringArray(R.array.istor);
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
-			array = R.array.istor;
+			//array = R.array.istor;
 			color = -16711936;
 			tv.setTextColor(2131427383);
 			tv2.setTextColor(-65536);
 			break;
 		case 5:
 			urok = "Английский язык";
-			choose  = getResources().getStringArray(R.array.angli);
+			//choose  = getResources().getStringArray(R.array.angli);
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
-			array = R.array.angli;
+			//array = R.array.angli;
 			color = -30700;
 			tv.setTextColor(-16711936);
 			tv2.setTextColor(-65536);
 			break;
 		case 6:
 			urok = "Физика";
-			choose  = getResources().getStringArray(R.array.fizik);
+			//choose  = getResources().getStringArray(R.array.fizik);
 			tv.setText("Физика");
 			ll.setBackgroundResource(R.drawable.fizik);
-			array = R.array.fizik;
+			//array = R.array.fizik;
 			color = -65536;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
 			break;
 		case 7:
 			urok = "Химия";
-			choose  = getResources().getStringArray(R.array.himik);
+			//choose  = getResources().getStringArray(R.array.himik);
 			tv.setText("Химия");
 			ll.setBackgroundResource(R.drawable.himik);
-			array = R.array.himik;
+			//array = R.array.himik;
 			color = -256;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
 			break;
 		case 8:
 			urok = "Информатика";
-			choose  = getResources().getStringArray(R.array.infor);
+			//choose  = getResources().getStringArray(R.array.infor);
 			tv.setText("Информатика");
 			ll.setBackgroundResource(R.drawable.infor);
-			array = R.array.infor;
+			//array = R.array.infor;
 			color = -16776961;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
@@ -210,14 +210,29 @@ public class Urok extends Activity {
 		ll = (LinearLayout) findViewById(R.id.LinearLayout);
 		text();
 
-		//choose();
-
 		sp = (Spinner) findViewById(R.id.spinner1);
 
-		ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, array,
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		int i = 0;
+		query = "SELECT * FROM " + DBHelper.DATABASE_TABLE + " WHERE lesson='" + urok + "' AND class='" + classes + "';";
+		cursor = db.rawQuery(query, null);
+		while (cursor.moveToNext()) {
+			choose[i] = cursor.getString(cursor.getColumnIndex(DBHelper.THEME_COLUMN));
+			adapter.add(choose[i]);
+			i++;
+		}
+		cursor.close();
+		sp.setAdapter(adapter);
+
+		//choose();
+
+		/*ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, array,
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		sp.setAdapter(adapter);
+		sp.setAdapter(adapter);*/
+
 		choose2();
 
 		/*sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

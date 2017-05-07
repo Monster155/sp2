@@ -82,8 +82,7 @@ public class Setting extends Activity {
                 builder.setTitle("Выберети класс")
                         .setItems(R.array.classes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // The 'which' argument contains the index position
-                                // of the selected item
+                                // The 'which' argument contains the index position of the selected item
                                 which++;
                                 tv.setText("Cейчас выбран класс №" + which);
                                 dbC.delete("class", null, null);

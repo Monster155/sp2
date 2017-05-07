@@ -23,8 +23,8 @@
         android:id="@+id/buttonM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/buttonShri"
+        android:layout_below="@+id/buttonShri"
         android:text="Математика" />
 
     <Button
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button5"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignRight="@+id/buttonUda"
         android:layout_below="@+id/button5"
         android:text="Английский язык" />
 
@@ -85,11 +85,12 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_manage"
+            app:srcCompat="@drawable/error"
             android:id="@+id/imageButton"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:elevation="0dp" />
     </RelativeLayout>
 
 </LinearLayout>

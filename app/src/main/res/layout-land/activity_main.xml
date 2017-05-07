@@ -11,98 +11,125 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/linearLayout2"
+                android:layout_toEndOf="@+id/linearLayout2"
+                android:id="@+id/linearLayout"
+                android:layout_width="300sp"
+                android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/buttonR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Русский язык" />
-
-            <Button
-                android:id="@+id/buttonT"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Татарский язык" />
-
-            <Button
-                android:id="@+id/buttonM"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button2"
-                android:layout_below="@+id/button2"
-                android:text="Математика" />
-
-            <Button
-                android:id="@+id/buttonIs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button3"
-                android:layout_below="@+id/button3"
-                android:text="История" />
-
-            <Button
-                android:id="@+id/buttonA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button5"
-                android:layout_alignRight="@+id/button1"
-                android:layout_below="@+id/button5"
-                android:text="Английский язык" />
-
-            <Button
-                android:id="@+id/buttonF"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button6"
-                android:layout_below="@+id/button6"
-                android:text="Физика" />
-
-            <Button
-                android:id="@+id/buttonH"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button7"
-                android:layout_below="@+id/button7"
-                android:text="Химия" />
-
-            <Button
-                android:id="@+id/buttonIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button4"
-                android:layout_below="@+id/button4"
-                android:text="Информатика" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <!--<Button
-                    android:id="@+id/button1"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/buttonR"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:text="Дополнить информацию" />-->
-                <!-- Дополнить информацию-->
+                    android:text="Русский язык" />
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/buttonT"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/ic_menu_manage"
-                    android:id="@+id/imageButton"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:text="Татарский язык" />
 
-            </RelativeLayout>
-        </LinearLayout>
+                <Button
+                    android:id="@+id/buttonM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/buttonShri"
+                    android:layout_below="@+id/buttonShri"
+                    android:text="Математика" />
 
+                <Button
+                    android:id="@+id/buttonIs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button3"
+                    android:layout_below="@+id/button3"
+                    android:text="История" />
+
+                <Button
+                    android:id="@+id/buttonA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button5"
+                    android:layout_alignRight="@+id/buttonUda"
+                    android:layout_below="@+id/button5"
+                    android:text="Английский язык" />
+
+                <Button
+                    android:id="@+id/buttonF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button6"
+                    android:layout_below="@+id/button6"
+                    android:text="Физика" />
+
+                <Button
+                    android:id="@+id/buttonH"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button7"
+                    android:layout_below="@+id/button7"
+                    android:text="Химия" />
+
+                <Button
+                    android:id="@+id/buttonIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button4"
+                    android:layout_below="@+id/button4"
+                    android:text="Информатика" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <!--<Button
+                        android:id="@+id/button1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:text="Дополнить информацию" />-->
+                    <!-- Дополнить информацию-->
+
+                    <ImageButton
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@android:drawable/ic_menu_manage"
+                        android:id="@+id/imageButton"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:elevation="0dp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/linearLayout2"
+                android:layout_width="300sp"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/buttonH1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button7"
+                    android:layout_below="@+id/button7"
+                    android:text="Химия" />
+
+                <Button
+                    android:id="@+id/buttonIn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/button4"
+                    android:layout_below="@+id/button4"
+                    android:text="Информатика" />
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
 </LinearLayout>

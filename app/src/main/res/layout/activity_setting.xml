@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button2"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dialog" />
 
 </RelativeLayout>
