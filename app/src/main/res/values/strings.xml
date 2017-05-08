@@ -5,6 +5,17 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+   	<string-array name="uroki">
+        <item>Русский язык</item>
+        <item>Татарский язык</item>
+        <item>Математика</item>
+        <item>История</item>
+        <item>Английский язык</item>
+        <item>Физика</item>
+        <item>Химия</item>
+        <item>Информатика</item>
+    </string-array>
+
     <string-array name="classes">
         <item>5 класс</item>
         <item>6 класс</item>
