@@ -4,71 +4,8 @@
     <string name="app_name">sp2</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
-    <string-array name="russk">
-        <item>Деепричастие</item>
-		<item>Причастие</item>
-        <item>Пунктуация</item>
-    </string-array>
-
-    <string-array name="tatar">
-        <item>Исем фигыль</item>
-		<item>Аергыч</item>
-        <item>Исем</item>
-    </string-array>
-    
-    <string-array name="matem">
-        <item>График функции</item>
-		<item>Неравенства</item>
-        <item>Окружность</item>
-    </string-array>
-    
-    <string-array name="istor">
-        <item>Правление Александра 1</item>
-		<item>1 Мировая Война</item>
-        <item>Отечественная война 1812 года</item>
-    </string-array>
-    
-    <string-array name="angli">
-        <item>Past Simple</item>
-		<item>Modals</item>
-        <item>Conditionals</item>
-    </string-array>
-    
-    <string-array name="fizik">
-        <item>Теплопроводность</item>
-		<item>Линзы</item>
-        <item>Электрический ток</item>
-    </string-array>
-    
-    <string-array name="himik">
-        <item>Окислители</item>
-		<item>Соли</item>
-        <item>Оксиды</item>
-    </string-array>
-    
-    <string-array name="infor">
-        <item>Способы ввода и вывода</item>
-		<item>Основные понятия</item>
-        <item>Виды переменных</item>
-    </string-array>
-    
-   	<string-array name="uroki">
-        <item>Русский язык</item>
-        <item>Татарский язык</item>
-        <item>Математика</item>
-        <item>История</item>
-        <item>Английский язык</item>
-        <item>Физика</item>
-        <item>Химия</item>
-        <item>Информатика</item>
-    </string-array>
 
     <string-array name="classes">
-        <item>1 класс</item>
-        <item>2 класс</item>
-        <item>3 класс</item>
-        <item>4 класс</item>
         <item>5 класс</item>
         <item>6 класс</item>
         <item>7 класс</item>

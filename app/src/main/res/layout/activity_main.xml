@@ -85,7 +85,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/error"
+            app:srcCompat="@drawable/settings"
             android:id="@+id/imageButton"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"

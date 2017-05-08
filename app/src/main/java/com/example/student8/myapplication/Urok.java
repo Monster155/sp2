@@ -6,23 +6,32 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Urok extends Activity {
 
 	TextView tv, tv2;
+	EditText et, et2;
 	Spinner sp;
 	LinearLayout ll;
-	int array, color;
+	int array, color, b;
 	HashMap<String, Integer> pas;
 	private DBHelper mDBH;
 	private DBClass mDBC;
@@ -30,34 +39,8 @@ public class Urok extends Activity {
 	int classes;
 
 	String[] choose = new String[123];
-	String urok;
+	String urok, theme, text;
 
-	/*public void choose(){
-	    pas.put("Деепричастие", R.string.Deeprichastie);
-	    pas.put("Причастие", R.string.Prichastie);
-	    pas.put("Правописание запятых", R.string.Pravopisanie_zapyatyh);
-	    pas.put("Исем фигыль", R.string.Isem_figyl);
-		pas.put("Аергыч", R.string.Aergych);
-		pas.put("Исем", R.string.Isem);
-		pas.put("График функции", R.string.Grafik_funkcii);
-		pas.put("Неравенства", R.string.Neravenstva);
-		pas.put("Окружность", R.string.Okrujnost);
-		pas.put("Правление Александра I", R.string.Pravlenie_Aleksandra_I);
-		pas.put("1 Мировая Война", R.string.I_Mirovaya_Voina);
-		pas.put("Отечественная война 1812 года", R.string.Otechestvennaya_voina_1812_goda);
-		pas.put("Past Simple", R.string.Past_Simple);
-		pas.put("Modals", R.string.Modals);
-		pas.put("Conditionals", R.string.Conditionals);
-		pas.put("Теплопроводность", R.string.Teploprovodnost);
-		pas.put("Линзы", R.string.Linzy);
-		pas.put("Электрический ток", R.string.Elektricheskii_tok);
-		pas.put("Окислители", R.string.Okisliteli);
-		pas.put("Соли", R.string.Soli);
-		pas.put("Оксиды", R.string.Oksidy);
-		pas.put("Способы ввода и вывода", R.string.Sposoby_vvoda_i_vyvoda);
-		pas.put("Основные понятия", R.string.Osnovnye_ponyatiya);
-		pas.put("Виды переменных", R.string.Vidy_peremennyh);
-	}*/
 
 	public void text() {
 		int r = getIntent().getIntExtra("k", 0);
@@ -66,79 +49,63 @@ public class Urok extends Activity {
 		switch (r) {
 		case 1:
 			urok = "Русский язык";
-			//choose  = getResources().getStringArray(R.array.russk);
 			tv.setText("Русский язык");
 			ll.setBackgroundResource(R.drawable.russk);
-			//array = R.array.russk;
 			color = -65536;
 			tv2.setTextColor(-16711936);
 			break;
 		case 2:
 			urok = "Татарский язык";
-			//choose  = getResources().getStringArray(R.array.tatar);
 			tv.setText("Татарский язык");
 			ll.setBackgroundResource(R.drawable.tatar);
-			//array = R.array.tatar;
 			color = -16711936;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-30700);
 			break;
 		case 3:
 			urok = "Математика";
-			//choose  = getResources().getStringArray(R.array.matem);
 			tv.setText("Математика");
 			ll.setBackgroundResource(R.drawable.matem);
-			//array = R.array.matem;
 			color = -16776961;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
 			break;
 		case 4:
 			urok = "История";
-			//choose  = getResources().getStringArray(R.array.istor);
 			tv.setText("История");
 			ll.setBackgroundResource(R.drawable.istor);
-			//array = R.array.istor;
 			color = -16711936;
 			tv.setTextColor(2131427383);
 			tv2.setTextColor(-65536);
 			break;
 		case 5:
 			urok = "Английский язык";
-			//choose  = getResources().getStringArray(R.array.angli);
 			tv.setText("Английский язык");
 			ll.setBackgroundResource(R.drawable.angli);
-			//array = R.array.angli;
 			color = -30700;
 			tv.setTextColor(-16711936);
 			tv2.setTextColor(-65536);
 			break;
 		case 6:
 			urok = "Физика";
-			//choose  = getResources().getStringArray(R.array.fizik);
 			tv.setText("Физика");
 			ll.setBackgroundResource(R.drawable.fizik);
-			//array = R.array.fizik;
 			color = -65536;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
 			break;
 		case 7:
 			urok = "Химия";
-			//choose  = getResources().getStringArray(R.array.himik);
 			tv.setText("Химия");
 			ll.setBackgroundResource(R.drawable.himik);
-			//array = R.array.himik;
 			color = -256;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
 			break;
 		case 8:
 			urok = "Информатика";
-			//choose  = getResources().getStringArray(R.array.infor);
 			tv.setText("Информатика");
 			ll.setBackgroundResource(R.drawable.infor);
-			//array = R.array.infor;
 			color = -16776961;
 			tv.setTextColor(-1);
 			tv2.setTextColor(-65536);
@@ -148,16 +115,6 @@ public class Urok extends Activity {
 			ll.setBackgroundResource(R.drawable.error);
 		}
 	}
-
-	/*public void file() {
-		try {
-			Scanner sc = new Scanner(
-					new File("/home/student/Рабочий стол/text"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
 
 	public void choose2(){
 		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -169,13 +126,12 @@ public class Urok extends Activity {
 				String print = "";
 				Cursor cursor = db.rawQuery(query, null);
 				while (cursor.moveToNext()) {
-					String text = cursor.getString(cursor
+					print = cursor.getString(cursor
 							.getColumnIndex(DBHelper.TEXT_COLUMN));
-					print = text + "\n" + "\n";
 				}
+				theme = choose[selectedItemPosition];
 				Log.d("Urok after choose2",print);
 				tv2.setText(print);
-				//tv2.setText(query);
 				cursor.close();
 			}
 			public void onNothingSelected(AdapterView<?> parent) {
@@ -187,6 +143,11 @@ public class Urok extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.urok);
+
+		final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
+		ib.setImageResource(R.drawable.pencil);
+		final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
+		ib2.setImageResource(R.drawable.plus);
 
 		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
 		db = mDBH.getWritableDatabase();
@@ -203,11 +164,23 @@ public class Urok extends Activity {
 
 		//file();
 		pas = new HashMap<String, Integer>();
+
+		et = (EditText) findViewById(R.id.editText);
+		et.setTextSize(20);
+		et.setVisibility(View.INVISIBLE);
+
+		et2 = (EditText) findViewById(R.id.editText2);
+		et2.setTextSize(1);
+		et2.setVisibility(View.INVISIBLE);
+
 		tv = (TextView) findViewById(R.id.textView1);
 		tv.setTextSize(30);
+
 		tv2 = (TextView) findViewById(R.id.textView2);
 		tv2.setTextSize(20);
+
 		ll = (LinearLayout) findViewById(R.id.LinearLayout);
+
 		text();
 
 		sp = (Spinner) findViewById(R.id.spinner1);
@@ -235,19 +208,137 @@ public class Urok extends Activity {
 
 		choose2();
 
-		/*sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> parent,
-					View itemSelected, int selectedItemPosition, long selectedId) {
+		b = 1;
 
-				if(pas.get(choose[selectedItemPosition]) == null){
-					tv2.setText("Жди дороботки");
-				} else{
-					int id = pas.get(choose[selectedItemPosition]);
-					tv2.setText(id);
+		ib.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(b == 1){
+					b = 2;
+					text = (String) tv2.getText();
+					tv2.setText("");
+					tv2.setTextSize(1);
+					et.setText(text);
+					et.setVisibility(View.VISIBLE);
+					ib.setImageResource(R.drawable.error);
+					ib2.setImageResource(R.drawable.check);
+				}
+				else {
+					if(b == 2){
+						b = 1;
+						tv2.setText(text);
+						et.setText("");
+						et.setVisibility(View.INVISIBLE);
+						tv2.setTextSize(20);
+
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+						ib.setImageResource(R.drawable.pencil);
+						ib2.setImageResource(R.drawable.plus);
+					}
+					if(b == 3){
+						b = 1;
+						et2.setText("");
+						et2.setVisibility(View.INVISIBLE);
+						et2.setTextSize(1);
+
+						et.setText("");
+						et.setVisibility(View.INVISIBLE);
+
+						tv2.setVisibility(View.VISIBLE);
+						tv2.setTextSize(20);
+
+						sp.setVisibility(View.VISIBLE);
+
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+						ib.setImageResource(R.drawable.pencil);
+						ib2.setImageResource(R.drawable.plus);
+					}
 				}
 			}
-			public void onNothingSelected(AdapterView<?> parent) {
+		});
+
+		ib2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(b == 1){
+					b = 3;
+					et2.setText("");
+					et2.setVisibility(View.VISIBLE);
+					et2.setTextSize(20);
+
+					sp.setVisibility(View.INVISIBLE);
+
+					et.setText("");
+					et.setVisibility(View.VISIBLE);
+
+					tv2.setVisibility(View.INVISIBLE);
+					tv2.setTextSize(1);
+
+					ib.setImageResource(R.drawable.error);
+					ib2.setImageResource(R.drawable.check);
+				}
+				else{
+					if(b == 2){
+						b = 1;
+						text = String.valueOf(et.getText());
+						tv2.setText(text);
+						et.setText("");
+						et.setVisibility(View.INVISIBLE);
+						tv2.setTextSize(20);
+
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+						// Обновление данных БД
+						ContentValues updateValues = new ContentValues();
+						updateValues.put(mDBH.TEXT_COLUMN, text);
+						db.update(mDBH.DATABASE_TABLE, updateValues, "lesson='" + urok + "' AND theme='" + theme + "';", null);
+
+						ib.setImageResource(R.drawable.pencil);
+						ib2.setImageResource(R.drawable.plus);
+					}
+					if(b == 3){
+						b = 1;
+
+						String t1, t2;
+						t1 = String.valueOf(et2.getText());
+						t2 = String.valueOf(et.getText());
+
+						// Создайте новую строку в БД
+						ContentValues newValues = new ContentValues();
+						newValues.put(mDBH.TEXT_COLUMN, t2);
+						newValues.put(mDBH.THEME_COLUMN, t1);
+						newValues.put(mDBH.LESSON_COLUMN, urok);
+						newValues.put(mDBH.CLASS_COLUMN, classes);
+						db.insert(mDBH.DATABASE_TABLE, null, newValues);
+
+						Toast toast = Toast.makeText(getApplicationContext(), "Чтобы изменения вступили в силу, \n" + "перезайдите во вкладку.", Toast.LENGTH_SHORT);
+						toast.show();
+
+						et2.setText("");
+						et2.setVisibility(View.INVISIBLE);
+						et2.setTextSize(1);
+
+						et.setText("");
+						et.setVisibility(View.INVISIBLE);
+
+						tv2.setVisibility(View.VISIBLE);
+						tv2.setTextSize(20);
+
+						sp.setVisibility(View.VISIBLE);
+
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+						ib.setImageResource(R.drawable.pencil);
+						ib2.setImageResource(R.drawable.plus);
+					}
+				}
 			}
-		});*/
+		});
 	}
 }

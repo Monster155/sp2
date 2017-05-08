@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,12 +8,32 @@
     android:orientation="vertical" >
 
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="50sp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="50sp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="75px"
+            android:layout_height="75px"
+            app:srcCompat="@drawable/pencil"
+            android:id="@+id/imageButton" />
+
+        <ImageButton
+            android:layout_width="75px"
+            android:layout_height="75px"
+            app:srcCompat="@drawable/plus"
+            android:id="@+id/imageButton2" />
+
+    </LinearLayout>
 
     <Spinner
         android:id="@+id/spinner1"
@@ -21,17 +42,39 @@
         android:entries="@array/russk"
         android:textColor="@color/blue" />
 
+    <EditText
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:hint="Введите тему" />
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/blue" />
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/blue" />
+        <EditText
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:hint="Введите текст" />
+
     </ScrollView>
 
 </LinearLayout>

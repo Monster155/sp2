@@ -183,7 +183,7 @@ public class Download {
 
             l.setName("Информатика");
             l.setTheme("Виды переменных");
-            l.setText("");
+            l.setText("Виды переменных");
             l.setClasses(9);
             dao.insert(l);
 

@@ -25,6 +25,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
+		ib.setImageResource(R.drawable.settings);
+
 		mDBS = new DBScan(this, "spscan.db", null, 1);
 		dbS = mDBS.getWritableDatabase();
 		dbS.close();
