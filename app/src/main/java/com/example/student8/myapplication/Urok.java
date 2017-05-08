@@ -183,28 +183,9 @@ public class Urok extends Activity {
 
 		text();
 
-		sp = (Spinner) findViewById(R.id.spinner1);
-
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-		int i = 0;
-		query = "SELECT * FROM " + DBHelper.DATABASE_TABLE + " WHERE lesson='" + urok + "' AND class='" + classes + "';";
-		cursor = db.rawQuery(query, null);
-		while (cursor.moveToNext()) {
-			choose[i] = cursor.getString(cursor.getColumnIndex(DBHelper.THEME_COLUMN));
-			adapter.add(choose[i]);
-			i++;
-		}
-		cursor.close();
-		sp.setAdapter(adapter);
+		spiner();
 
 		//choose();
-
-		/*ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, array,
-				android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		sp.setAdapter(adapter);*/
 
 		choose2();
 
@@ -216,10 +197,19 @@ public class Urok extends Activity {
 				if(b == 1){
 					b = 2;
 					text = (String) tv2.getText();
-					tv2.setText("");
-					tv2.setTextSize(1);
+
 					et.setText(text);
 					et.setVisibility(View.VISIBLE);
+
+					tv2.setText("");
+					tv2.setTextSize(1);
+
+					sp.setVisibility(View.INVISIBLE);
+
+					et2.setText(theme);
+					et2.setVisibility(View.VISIBLE);
+					et2.setTextSize(20);
+
 					ib.setImageResource(R.drawable.error);
 					ib2.setImageResource(R.drawable.check);
 				}
@@ -227,9 +217,18 @@ public class Urok extends Activity {
 					if(b == 2){
 						b = 1;
 						tv2.setText(text);
+						tv2.setText(text);
+						tv2.setTextSize(20);
+
+						et2.setText("");
+						et2.setVisibility(View.INVISIBLE);
+						et2.setTextSize(1);
+
 						et.setText("");
 						et.setVisibility(View.INVISIBLE);
-						tv2.setTextSize(20);
+
+						sp.setVisibility(View.VISIBLE);
+						spiner();
 
 						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -250,6 +249,7 @@ public class Urok extends Activity {
 						tv2.setTextSize(20);
 
 						sp.setVisibility(View.VISIBLE);
+						spiner();
 
 						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -285,10 +285,18 @@ public class Urok extends Activity {
 					if(b == 2){
 						b = 1;
 						text = String.valueOf(et.getText());
+						tv2.setTextSize(20);
 						tv2.setText(text);
+
+						String th = String.valueOf(et2.getText());
+
 						et.setText("");
 						et.setVisibility(View.INVISIBLE);
-						tv2.setTextSize(20);
+
+						et2.setText("");
+						et2.setVisibility(View.INVISIBLE);
+
+						sp.setVisibility(View.VISIBLE);
 
 						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -296,7 +304,10 @@ public class Urok extends Activity {
 						// Обновление данных БД
 						ContentValues updateValues = new ContentValues();
 						updateValues.put(mDBH.TEXT_COLUMN, text);
+						updateValues.put(mDBH.THEME_COLUMN, th);
 						db.update(mDBH.DATABASE_TABLE, updateValues, "lesson='" + urok + "' AND theme='" + theme + "';", null);
+
+						spiner();
 
 						ib.setImageResource(R.drawable.pencil);
 						ib2.setImageResource(R.drawable.plus);
@@ -316,9 +327,6 @@ public class Urok extends Activity {
 						newValues.put(mDBH.CLASS_COLUMN, classes);
 						db.insert(mDBH.DATABASE_TABLE, null, newValues);
 
-						Toast toast = Toast.makeText(getApplicationContext(), "Чтобы изменения вступили в силу, \n" + "перезайдите во вкладку.", Toast.LENGTH_SHORT);
-						toast.show();
-
 						et2.setText("");
 						et2.setVisibility(View.INVISIBLE);
 						et2.setTextSize(1);
@@ -330,6 +338,7 @@ public class Urok extends Activity {
 						tv2.setTextSize(20);
 
 						sp.setVisibility(View.VISIBLE);
+						spiner();
 
 						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 						imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -340,5 +349,22 @@ public class Urok extends Activity {
 				}
 			}
 		});
+	}
+
+	private void spiner() {
+		sp = (Spinner) findViewById(R.id.spinner1);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		int i = 0;
+		String query = "SELECT * FROM " + DBHelper.DATABASE_TABLE + " WHERE lesson='" + urok + "' AND class='" + classes + "';";
+		Cursor cursor = db.rawQuery(query, null);
+		while (cursor.moveToNext()) {
+			choose[i] = cursor.getString(cursor.getColumnIndex(DBHelper.THEME_COLUMN));
+			adapter.add(choose[i]);
+			i++;
+		}
+		cursor.close();
+		sp.setAdapter(adapter);
 	}
 }
