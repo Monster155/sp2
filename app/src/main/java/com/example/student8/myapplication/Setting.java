@@ -83,7 +83,7 @@ public class Setting extends Activity {
                         .setItems(R.array.classes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // The 'which' argument contains the index position of the selected item
-                                which++;
+                                which = which + 5;
                                 tv.setText("Cейчас выбран класс №" + which);
                                 dbC.delete("class", null, null);
                                 // Создайте новую строку со значениями для вставки.
@@ -92,7 +92,7 @@ public class Setting extends Activity {
                                 newValues.put("class", which);
                                 // Вставьте строку в вашу базу данных.
                                 dbC.insert("class", null, newValues);
-                                which--;
+                                which = which - 5;
                             }
                         });
                 AlertDialog alert = builder.create();
