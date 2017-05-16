@@ -1,12 +1,15 @@
 package com.example.student8.myapplication;
 
-import android.app.*;
+import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
@@ -46,7 +49,7 @@ public class MainActivity extends Activity {
 		r.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 1);
 				startActivity(intent);
 			}
@@ -55,7 +58,7 @@ public class MainActivity extends Activity {
 		t.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 2);
 				startActivity(intent);
 			}
@@ -64,7 +67,7 @@ public class MainActivity extends Activity {
 		m.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 3);
 				startActivity(intent);
 			}
@@ -73,7 +76,7 @@ public class MainActivity extends Activity {
 		is.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 4);
 				startActivity(intent);
 			}
@@ -82,7 +85,7 @@ public class MainActivity extends Activity {
 		a.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 5);
 				startActivity(intent);
 			}
@@ -91,7 +94,7 @@ public class MainActivity extends Activity {
 		f.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 6);
 				startActivity(intent);
 			}
@@ -100,7 +103,7 @@ public class MainActivity extends Activity {
 		h.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 7);
 				startActivity(intent);
 			}
@@ -109,7 +112,7 @@ public class MainActivity extends Activity {
 		in.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Klass.class);
+				Intent intent = new Intent(MainActivity.this, Urok.class);
 				intent.putExtra("k", 8);
 				startActivity(intent);
 			}

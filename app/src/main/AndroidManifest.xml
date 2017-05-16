@@ -20,12 +20,6 @@
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".ListActivity"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".Klass"
-            android:label="@string/app_name" />
-        <activity
             android:name=".Urok"
             android:label="@string/app_name" />
     </application>
