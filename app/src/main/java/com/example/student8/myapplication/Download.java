@@ -187,6 +187,42 @@ public class Download {
             l.setClasses(9);
             dao.insert(l);
 
+            l.setName("Русский язык");
+            l.setTheme("Тест");
+            l.setText("Тетс 5");
+            l.setClasses(5);
+            dao.insert(l);
+
+            l.setName("Русский язык");
+            l.setTheme("Тест");
+            l.setText("Тетс 6");
+            l.setClasses(6);
+            dao.insert(l);
+
+            l.setName("Русский язык");
+            l.setTheme("Тест");
+            l.setText("Тетс 7");
+            l.setClasses(7);
+            dao.insert(l);
+
+            l.setName("Русский язык");
+            l.setTheme("Тест");
+            l.setText("Тетс 8");
+            l.setClasses(8);
+            dao.insert(l);
+
+            l.setName("Русский язык");
+            l.setTheme("Тест");
+            l.setText("Тетс 10");
+            l.setClasses(10);
+            dao.insert(l);
+
+            l.setName("Русский язык");
+            l.setTheme("Тест");
+            l.setText("Тетс 11");
+            l.setClasses(11);
+            dao.insert(l);
+
             enter.enter(2);
 
 

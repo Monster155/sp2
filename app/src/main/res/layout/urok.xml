@@ -24,6 +24,12 @@
         <ImageButton
             android:layout_width="75px"
             android:layout_height="75px"
+            app:srcCompat="@drawable/trash"
+            android:id="@+id/imageButton3" />
+
+        <ImageButton
+            android:layout_width="75px"
+            android:layout_height="75px"
             app:srcCompat="@drawable/pencil"
             android:id="@+id/imageButton" />
 

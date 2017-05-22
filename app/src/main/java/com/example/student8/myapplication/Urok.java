@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,12 +40,295 @@ public class Urok extends Activity {
     private SQLiteDatabase db, dbC;
     int classes;
 
-    ImageButton ib, ib2;
+    ImageButton ib, ib2, ib3;
 
     String[] choose = new String[123];
     String urok, theme, text;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.urok);
 
+        names();
+
+        String query = "SELECT * FROM " + DBClass.DATABASE_TABLE;
+        Cursor cursor = dbC.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            classes = cursor.getInt(cursor.getColumnIndex(DBClass.CLASS_COLUMN));
+        }
+        cursor.close();
+
+        text();
+        spiner();
+        choose2();
+
+        b = 1;
+        buttons();
+    }
+
+    //заполнение spinner
+    private void spiner() {
+        sp = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        int i = 0;
+        String query = "SELECT * FROM " + DBHelper.DATABASE_TABLE + " WHERE lesson='" + urok + "' AND class='" + classes + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            choose[i] = cursor.getString(cursor.getColumnIndex(DBHelper.THEME_COLUMN));
+            adapter.add(choose[i]);
+            i++;
+        }
+        cursor.close();
+        sp.setAdapter(adapter);
+    }
+
+    //действие кнопок
+    public void buttons(){
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(b == 1){
+                    b = 2;
+                    text = (String) tv2.getText();
+
+                    et.setText(text);
+                    et.setVisibility(View.VISIBLE);
+
+                    tv2.setText("");
+                    tv2.setTextSize(1);
+
+                    sp.setVisibility(View.INVISIBLE);
+
+                    et2.setText(theme);
+                    et2.setVisibility(View.VISIBLE);
+                    et2.setTextSize(20);
+
+                    ib3.setVisibility(View.INVISIBLE);
+
+                    ib.setImageResource(R.drawable.error);
+                    ib2.setImageResource(R.drawable.check);
+                }
+                else {
+                    if(b == 2){
+                        b = 1;
+                        tv2.setText(text);
+                        tv2.setText(text);
+                        tv2.setTextSize(20);
+
+                        et2.setText("");
+                        et2.setVisibility(View.INVISIBLE);
+                        et2.setTextSize(1);
+
+                        et.setText("");
+                        et.setVisibility(View.INVISIBLE);
+
+                        sp.setVisibility(View.VISIBLE);
+                        spiner();
+
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        ib3.setVisibility(View.VISIBLE);
+
+                        ib.setImageResource(R.drawable.pencil);
+                        ib2.setImageResource(R.drawable.plus);
+                    }
+                    if(b == 3){
+                        b = 1;
+                        et2.setText("");
+                        et2.setVisibility(View.INVISIBLE);
+                        et2.setTextSize(1);
+
+                        et.setText("");
+                        et.setVisibility(View.INVISIBLE);
+
+                        tv2.setVisibility(View.VISIBLE);
+                        tv2.setTextSize(20);
+
+                        sp.setVisibility(View.VISIBLE);
+                        spiner();
+
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        ib3.setVisibility(View.VISIBLE);
+
+                        ib.setImageResource(R.drawable.pencil);
+                        ib2.setImageResource(R.drawable.plus);
+                    }
+                }
+            }
+        });
+
+        ib2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            if(b == 1){
+                b = 3;
+                et2.setText("");
+                et2.setVisibility(View.VISIBLE);
+                et2.setTextSize(20);
+
+                sp.setVisibility(View.INVISIBLE);
+
+                et.setText("");
+                et.setVisibility(View.VISIBLE);
+
+                tv2.setVisibility(View.INVISIBLE);
+                tv2.setTextSize(1);
+
+                ib3.setVisibility(View.INVISIBLE);
+
+                ib.setImageResource(R.drawable.error);
+                ib2.setImageResource(R.drawable.check);
+            }
+            else{
+                if(b == 2){
+                    b = 1;
+                    text = String.valueOf(et.getText());
+                    tv2.setTextSize(20);
+                    tv2.setText(text);
+
+                    String th = String.valueOf(et2.getText());
+
+                    et.setText("");
+                    et.setVisibility(View.INVISIBLE);
+
+                    et2.setText("");
+                    et2.setVisibility(View.INVISIBLE);
+
+                    sp.setVisibility(View.VISIBLE);
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    // Обновление данных БД
+                    ContentValues updateValues = new ContentValues();
+                    updateValues.put(mDBH.TEXT_COLUMN, text);
+                    updateValues.put(mDBH.THEME_COLUMN, th);
+                    db.update(mDBH.DATABASE_TABLE, updateValues, "lesson='" + urok + "' AND theme='" + theme + "';", null);
+
+                    spiner();
+
+                    ib3.setVisibility(View.VISIBLE);
+
+                    ib.setImageResource(R.drawable.pencil);
+                    ib2.setImageResource(R.drawable.plus);
+                }
+                if(b == 3){
+                    b = 1;
+
+                    String t1, t2;
+                    t1 = String.valueOf(et2.getText());
+                    t2 = String.valueOf(et.getText());
+
+                    // Создайте новую строку в БД
+                    ContentValues newValues = new ContentValues();
+                    newValues.put(mDBH.TEXT_COLUMN, t2);
+                    newValues.put(mDBH.THEME_COLUMN, t1);
+                    newValues.put(mDBH.LESSON_COLUMN, urok);
+                    newValues.put(mDBH.CLASS_COLUMN, classes);
+                    db.insert(mDBH.DATABASE_TABLE, null, newValues);
+
+                    et2.setText("");
+                    et2.setVisibility(View.INVISIBLE);
+                    et2.setTextSize(1);
+
+                    et.setText("");
+                    et.setVisibility(View.INVISIBLE);
+
+                    tv2.setVisibility(View.VISIBLE);
+                    tv2.setTextSize(20);
+
+                    sp.setVisibility(View.VISIBLE);
+                    spiner();
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    ib3.setVisibility(View.VISIBLE);
+
+                    ib.setImageResource(R.drawable.pencil);
+                    ib2.setImageResource(R.drawable.plus);
+                }
+            }
+            }
+        });
+
+        ib3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(b == 1){
+                    choose2();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Urok.this);
+                    builder.setTitle("Удалить эту тему?")
+                            .setNegativeButton("Нет",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    }
+                            )
+                            .setPositiveButton("Да",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            db.delete(mDBH.DATABASE_TABLE, "lesson='" + urok + "' AND theme='" + theme + "' AND class='" + classes + "';", null);
+                                            spiner();
+                                        }
+                                    }
+                            );
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+                else{
+                    if(b == 2){
+
+                    }
+                    if(b == 3){
+
+                    }
+                }
+            }
+        });
+    }
+
+    //обьявление переменных
+    public void names(){
+        ib = (ImageButton) findViewById(R.id.imageButton);
+        ib.setImageResource(R.drawable.pencil);
+        ib2 = (ImageButton) findViewById(R.id.imageButton2);
+        ib2.setImageResource(R.drawable.plus);
+        ib3 = (ImageButton) findViewById(R.id.imageButton3);
+        ib3.setImageResource(R.drawable.trash);
+
+        mDBH = new DBHelper(this, "spdatabase.db", null, 1);
+        db = mDBH.getWritableDatabase();
+
+        mDBC = new DBClass(this, "spclass.db", null, 1);
+        dbC = mDBC.getWritableDatabase();
+
+        et = (EditText) findViewById(R.id.editText);
+        et.setTextSize(20);
+        et.setVisibility(View.INVISIBLE);
+
+        et2 = (EditText) findViewById(R.id.editText2);
+        et2.setTextSize(1);
+        et2.setVisibility(View.INVISIBLE);
+
+        tv = (TextView) findViewById(R.id.textView1);
+        tv.setTextSize(30);
+
+        tv2 = (TextView) findViewById(R.id.textView2);
+        tv2.setTextSize(20);
+
+        ll = (LinearLayout) findViewById(R.id.LinearLayout);
+    }
+
+    //корректировка xml
     public void text() {
         int r = getIntent().getIntExtra("k", 0);
 
@@ -118,6 +403,7 @@ public class Urok extends Activity {
         }
     }
 
+    //что выбрано в spinner
     public void choose2(){
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
@@ -139,234 +425,5 @@ public class Urok extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.urok);
-
-        names();
-
-        String query = "SELECT * FROM " + DBClass.DATABASE_TABLE;
-        Cursor cursor = dbC.rawQuery(query, null);
-        while (cursor.moveToNext()) {
-            classes = cursor.getInt(cursor.getColumnIndex(DBClass.CLASS_COLUMN));
-        }
-        cursor.close();
-
-        text();
-        spiner();
-        choose2();
-
-        b = 1;
-        buttons();
-    }
-
-    private void spiner() {
-        sp = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        int i = 0;
-        String query = "SELECT * FROM " + DBHelper.DATABASE_TABLE + " WHERE lesson='" + urok + "' AND class='" + classes + "';";
-        Cursor cursor = db.rawQuery(query, null);
-        while (cursor.moveToNext()) {
-            choose[i] = cursor.getString(cursor.getColumnIndex(DBHelper.THEME_COLUMN));
-            adapter.add(choose[i]);
-            i++;
-        }
-        cursor.close();
-        sp.setAdapter(adapter);
-    }
-
-    public void buttons(){
-        ib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(b == 1){
-                    b = 2;
-                    text = (String) tv2.getText();
-
-                    et.setText(text);
-                    et.setVisibility(View.VISIBLE);
-
-                    tv2.setText("");
-                    tv2.setTextSize(1);
-
-                    sp.setVisibility(View.INVISIBLE);
-
-                    et2.setText(theme);
-                    et2.setVisibility(View.VISIBLE);
-                    et2.setTextSize(20);
-
-                    ib.setImageResource(R.drawable.error);
-                    ib2.setImageResource(R.drawable.check);
-                }
-                else {
-                    if(b == 2){
-                        b = 1;
-                        tv2.setText(text);
-                        tv2.setText(text);
-                        tv2.setTextSize(20);
-
-                        et2.setText("");
-                        et2.setVisibility(View.INVISIBLE);
-                        et2.setTextSize(1);
-
-                        et.setText("");
-                        et.setVisibility(View.INVISIBLE);
-
-                        sp.setVisibility(View.VISIBLE);
-                        spiner();
-
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                        ib.setImageResource(R.drawable.pencil);
-                        ib2.setImageResource(R.drawable.plus);
-                    }
-                    if(b == 3){
-                        b = 1;
-                        et2.setText("");
-                        et2.setVisibility(View.INVISIBLE);
-                        et2.setTextSize(1);
-
-                        et.setText("");
-                        et.setVisibility(View.INVISIBLE);
-
-                        tv2.setVisibility(View.VISIBLE);
-                        tv2.setTextSize(20);
-
-                        sp.setVisibility(View.VISIBLE);
-                        spiner();
-
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                        ib.setImageResource(R.drawable.pencil);
-                        ib2.setImageResource(R.drawable.plus);
-                    }
-                }
-            }
-        });
-
-        ib2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(b == 1){
-                    b = 3;
-                    et2.setText("");
-                    et2.setVisibility(View.VISIBLE);
-                    et2.setTextSize(20);
-
-                    sp.setVisibility(View.INVISIBLE);
-
-                    et.setText("");
-                    et.setVisibility(View.VISIBLE);
-
-                    tv2.setVisibility(View.INVISIBLE);
-                    tv2.setTextSize(1);
-
-                    ib.setImageResource(R.drawable.error);
-                    ib2.setImageResource(R.drawable.check);
-                }
-                else{
-                    if(b == 2){
-                        b = 1;
-                        text = String.valueOf(et.getText());
-                        tv2.setTextSize(20);
-                        tv2.setText(text);
-
-                        String th = String.valueOf(et2.getText());
-
-                        et.setText("");
-                        et.setVisibility(View.INVISIBLE);
-
-                        et2.setText("");
-                        et2.setVisibility(View.INVISIBLE);
-
-                        sp.setVisibility(View.VISIBLE);
-
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                        // Обновление данных БД
-                        ContentValues updateValues = new ContentValues();
-                        updateValues.put(mDBH.TEXT_COLUMN, text);
-                        updateValues.put(mDBH.THEME_COLUMN, th);
-                        db.update(mDBH.DATABASE_TABLE, updateValues, "lesson='" + urok + "' AND theme='" + theme + "';", null);
-
-                        spiner();
-
-                        ib.setImageResource(R.drawable.pencil);
-                        ib2.setImageResource(R.drawable.plus);
-                    }
-                    if(b == 3){
-                        b = 1;
-
-                        String t1, t2;
-                        t1 = String.valueOf(et2.getText());
-                        t2 = String.valueOf(et.getText());
-
-                        // Создайте новую строку в БД
-                        ContentValues newValues = new ContentValues();
-                        newValues.put(mDBH.TEXT_COLUMN, t2);
-                        newValues.put(mDBH.THEME_COLUMN, t1);
-                        newValues.put(mDBH.LESSON_COLUMN, urok);
-                        newValues.put(mDBH.CLASS_COLUMN, classes);
-                        db.insert(mDBH.DATABASE_TABLE, null, newValues);
-
-                        et2.setText("");
-                        et2.setVisibility(View.INVISIBLE);
-                        et2.setTextSize(1);
-
-                        et.setText("");
-                        et.setVisibility(View.INVISIBLE);
-
-                        tv2.setVisibility(View.VISIBLE);
-                        tv2.setTextSize(20);
-
-                        sp.setVisibility(View.VISIBLE);
-                        spiner();
-
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                        ib.setImageResource(R.drawable.pencil);
-                        ib2.setImageResource(R.drawable.plus);
-                    }
-                }
-            }
-        });
-    }
-
-    public void names(){
-        ib = (ImageButton) findViewById(R.id.imageButton);
-        ib.setImageResource(R.drawable.pencil);
-        ib2 = (ImageButton) findViewById(R.id.imageButton2);
-        ib2.setImageResource(R.drawable.plus);
-
-        mDBH = new DBHelper(this, "spdatabase.db", null, 1);
-        db = mDBH.getWritableDatabase();
-
-        mDBC = new DBClass(this, "spclass.db", null, 1);
-        dbC = mDBC.getWritableDatabase();
-
-        et = (EditText) findViewById(R.id.editText);
-        et.setTextSize(20);
-        et.setVisibility(View.INVISIBLE);
-
-        et2 = (EditText) findViewById(R.id.editText2);
-        et2.setTextSize(1);
-        et2.setVisibility(View.INVISIBLE);
-
-        tv = (TextView) findViewById(R.id.textView1);
-        tv.setTextSize(30);
-
-        tv2 = (TextView) findViewById(R.id.textView2);
-        tv2.setTextSize(20);
-
-        ll = (LinearLayout) findViewById(R.id.LinearLayout);
     }
 }
