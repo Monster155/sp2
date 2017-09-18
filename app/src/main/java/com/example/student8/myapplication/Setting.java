@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class Setting extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        btn = (Button) findViewById(R.id.button1);
+        btn = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
         tv = (TextView) findViewById(R.id.textView);
 
@@ -47,7 +48,7 @@ public class Setting extends Activity {
         tv.setText("Cейчас выбран класс №" + classes);
         cursor.close();
 
-       /* btn.setOnClickListener(new View.OnClickListener() {
+       /* btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Setting.this);
@@ -97,6 +98,14 @@ public class Setting extends Activity {
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Setting.this, TimeTable.class);
+                startActivity(intent);
             }
         });
     }
