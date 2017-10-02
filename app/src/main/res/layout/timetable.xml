@@ -11,17 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:columnCount="1"
-        android:background="#00FF00"
+        android:background="#FF0000"
         android:orientation="horizontal" >
 
-        <Spinner android:text="1" />
-        <Spinner android:text="2" />
-        <Spinner android:text="3" />
-        <Spinner android:text="4" />
-        <Spinner android:text="5" />
-        <Spinner android:text="6" />
-        <Spinner android:text="7" />
-        <Spinner android:text="8" />
+        <Spinner android:text="1" android:id="@+id/Spinner11" />
+        <Spinner android:text="2" android:id="@+id/Spinner12" />
+        <Spinner android:text="3" android:id="@+id/Spinner13" />
+        <Spinner android:text="4" android:id="@+id/Spinner14" />
+        <Spinner android:text="5" android:id="@+id/Spinner15" />
+        <Spinner android:text="6" android:id="@+id/Spinner16" />
+        <Spinner android:text="7" android:id="@+id/Spinner17" />
+        <Spinner android:text="8" android:id="@+id/Spinner18" />
 
     </GridLayout>
 
@@ -33,75 +33,14 @@
         android:background="#ffb300"
         android:orientation="horizontal" >
 
-        <Spinner android:text="1" />
-        <Spinner android:text="2" />
-        <Spinner android:text="3" />
-        <Spinner android:text="4" />
-        <Spinner android:text="5" />
-        <Spinner android:text="6" />
-        <Spinner android:text="7" />
-        <Spinner android:text="8" />
-
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#FF00FF"
-        android:orientation="horizontal"
-        android:layout_row="0"
-        android:layout_column="9">
-
-        <Spinner android:text="1" />
-        <Spinner android:text="2" />
-        <Spinner android:text="3" />
-        <Spinner android:text="4" />
-        <Spinner android:text="5" />
-        <Spinner android:text="6" />
-        <Spinner android:text="7" />
-        <Spinner android:text="8" />
-
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#FF0000"
-        android:orientation="horizontal" >
-
-        <Spinner android:text="1" />
-        <Spinner android:text="2" />
-        <Spinner android:text="3" />
-        <Spinner android:text="4" />
-        <Spinner android:text="5" />
-        <Spinner android:text="6" />
-        <Spinner android:text="7" />
-        <Spinner android:text="8" />
-
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#0000FF"
-        android:orientation="horizontal"
-        android:layout_row="0"
-        android:layout_column="3">
-
-        <Spinner android:text="1" />
-        <Spinner android:text="2" />
-        <Spinner android:text="3" />
-        <Spinner android:text="4" />
-        <Spinner android:text="5" />
-        <Spinner android:text="6" />
-        <Spinner android:text="7" />
-        <Spinner android:text="8" />
+        <Spinner android:text="9" android:id="@+id/Spinner21" />
+        <Spinner android:text="10" android:id="@+id/Spinner22" />
+        <Spinner android:text="11" android:id="@+id/Spinner23" />
+        <Spinner android:text="12" android:id="@+id/Spinner24" />
+        <Spinner android:text="13" android:id="@+id/Spinner25" />
+        <Spinner android:text="14" android:id="@+id/Spinner26" />
+        <Spinner android:text="15" android:id="@+id/Spinner27" />
+        <Spinner android:text="16" android:id="@+id/Spinner28" />
 
     </GridLayout>
 
@@ -111,16 +50,78 @@
         android:layout_gravity="center"
         android:columnCount="1"
         android:background="#FFFF00"
+        android:orientation="horizontal"
+        android:layout_row="0"
+        android:layout_column="3">
+
+        <Spinner android:text="17" android:id="@+id/Spinner31" />
+        <Spinner android:text="18" android:id="@+id/Spinner32" />
+        <Spinner android:text="19" android:id="@+id/Spinner33" />
+        <Spinner android:text="20" android:id="@+id/Spinner34" />
+        <Spinner android:text="21" android:id="@+id/Spinner35" />
+        <Spinner android:text="22" android:id="@+id/Spinner36" />
+        <Spinner android:text="23" android:id="@+id/Spinner37" />
+        <Spinner android:text="24" android:id="@+id/Spinner38" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="1"
+        android:background="#00FF00"
         android:orientation="horizontal" >
 
-        <Spinner android:text="1" />
-        <Spinner android:text="2" />
-        <Spinner android:text="3" />
-        <Spinner android:text="4" />
-        <Spinner android:text="5" />
-        <Spinner android:text="6" />
-        <Spinner android:text="7" />
-        <Spinner android:text="8" />
+        <Spinner android:text="25" android:id="@+id/Spinner41" />
+        <Spinner android:text="26" android:id="@+id/Spinner42" />
+        <Spinner android:text="27" android:id="@+id/Spinner43" />
+        <Spinner android:text="28" android:id="@+id/Spinner44" />
+        <Spinner android:text="29" android:id="@+id/Spinner45" />
+        <Spinner android:text="30" android:id="@+id/Spinner46" />
+        <Spinner android:text="31" android:id="@+id/Spinner47" />
+        <Spinner android:text="32" android:id="@+id/Spinner48" />
+
+    </GridLayout>
+
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="1"
+        android:background="#0000FF"
+        android:orientation="horizontal"
+        android:layout_row="0"
+        android:layout_column="9">
+
+        <Spinner android:text="33" android:id="@+id/Spinner51" />
+        <Spinner android:text="34" android:id="@+id/Spinner52" />
+        <Spinner android:text="35" android:id="@+id/Spinner53" />
+        <Spinner android:text="36" android:id="@+id/Spinner54" />
+        <Spinner android:text="37" android:id="@+id/Spinner55" />
+        <Spinner android:text="38" android:id="@+id/Spinner56" />
+        <Spinner android:text="39" android:id="@+id/Spinner57" />
+        <Spinner android:text="40" android:id="@+id/Spinner58" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="1"
+        android:background="#FF00FF"
+        android:orientation="horizontal" >
+
+        <Spinner android:text="41" android:id="@+id/Spinner61" />
+        <Spinner android:text="42" android:id="@+id/Spinner62" />
+        <Spinner android:text="43" android:id="@+id/Spinner63" />
+        <Spinner android:text="44" android:id="@+id/Spinner64" />
+        <Spinner android:text="45" android:id="@+id/Spinner65" />
+        <Spinner android:text="46" android:id="@+id/Spinner66" />
+        <Spinner android:text="47" android:id="@+id/Spinner67" />
+        <Spinner android:text="48" android:id="@+id/Spinner68" />
 
     </GridLayout>
 
