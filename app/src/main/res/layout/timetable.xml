@@ -1,128 +1,440 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:columnCount="10"
-    android:orientation="vertical" >
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*" >
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#FF0000"
-        android:orientation="horizontal" >
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <Spinner android:text="1" android:id="@+id/Spinner11" />
-        <Spinner android:text="2" android:id="@+id/Spinner12" />
-        <Spinner android:text="3" android:id="@+id/Spinner13" />
-        <Spinner android:text="4" android:id="@+id/Spinner14" />
-        <Spinner android:text="5" android:id="@+id/Spinner15" />
-        <Spinner android:text="6" android:id="@+id/Spinner16" />
-        <Spinner android:text="7" android:id="@+id/Spinner17" />
-        <Spinner android:text="8" android:id="@+id/Spinner18" />
+        <TextView
+            android:text="Пн 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView11" />
 
-    </GridLayout>
+        <TextView
+            android:text="Ср 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView31" />
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#ffb300"
-        android:orientation="horizontal" >
+        <TextView
+            android:text="Пт 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView51" />
 
-        <Spinner android:text="9" android:id="@+id/Spinner21" />
-        <Spinner android:text="10" android:id="@+id/Spinner22" />
-        <Spinner android:text="11" android:id="@+id/Spinner23" />
-        <Spinner android:text="12" android:id="@+id/Spinner24" />
-        <Spinner android:text="13" android:id="@+id/Spinner25" />
-        <Spinner android:text="14" android:id="@+id/Spinner26" />
-        <Spinner android:text="15" android:id="@+id/Spinner27" />
-        <Spinner android:text="16" android:id="@+id/Spinner28" />
+    </TableRow>
 
-    </GridLayout>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#FFFF00"
-        android:orientation="horizontal"
-        android:layout_row="0"
-        android:layout_column="3">
+        <TextView
+            android:text="Пн 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView12" />
 
-        <Spinner android:text="17" android:id="@+id/Spinner31" />
-        <Spinner android:text="18" android:id="@+id/Spinner32" />
-        <Spinner android:text="19" android:id="@+id/Spinner33" />
-        <Spinner android:text="20" android:id="@+id/Spinner34" />
-        <Spinner android:text="21" android:id="@+id/Spinner35" />
-        <Spinner android:text="22" android:id="@+id/Spinner36" />
-        <Spinner android:text="23" android:id="@+id/Spinner37" />
-        <Spinner android:text="24" android:id="@+id/Spinner38" />
+        <TextView
+            android:text="Ср 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView32" />
 
-    </GridLayout>
+        <TextView
+            android:text="Пт 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView52" />
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#00FF00"
-        android:orientation="horizontal" >
+    </TableRow>
 
-        <Spinner android:text="25" android:id="@+id/Spinner41" />
-        <Spinner android:text="26" android:id="@+id/Spinner42" />
-        <Spinner android:text="27" android:id="@+id/Spinner43" />
-        <Spinner android:text="28" android:id="@+id/Spinner44" />
-        <Spinner android:text="29" android:id="@+id/Spinner45" />
-        <Spinner android:text="30" android:id="@+id/Spinner46" />
-        <Spinner android:text="31" android:id="@+id/Spinner47" />
-        <Spinner android:text="32" android:id="@+id/Spinner48" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-    </GridLayout>
+        <TextView
+            android:text="Пн 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView13" />
+
+        <TextView
+            android:text="Ср 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView33" />
+
+        <TextView
+            android:text="Пт 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView53" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Пн 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView14" />
+
+        <TextView
+            android:text="Ср 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView34" />
+
+        <TextView
+            android:text="Пт 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView54" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Пн 5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView15" />
+
+        <TextView
+            android:text="Ср 5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView35" />
+
+        <TextView
+            android:text="Пт 5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView55" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Пн 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView16" />
+
+        <TextView
+            android:text="Ср 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView36" />
+
+        <TextView
+            android:text="Пт 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView56" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Пн 7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView17" />
+
+        <TextView
+            android:text="Ср 7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView37" />
+
+        <TextView
+            android:text="Пт 7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView57" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Пн 8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:id="@+id/textView18" />
+
+        <TextView
+            android:text="Ср 8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:id="@+id/textView38" />
+
+        <TextView
+            android:text="Пт 8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:id="@+id/textView58" />
+
+    </TableRow>
 
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#0000FF"
-        android:orientation="horizontal"
-        android:layout_row="0"
-        android:layout_column="9">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <Spinner android:text="33" android:id="@+id/Spinner51" />
-        <Spinner android:text="34" android:id="@+id/Spinner52" />
-        <Spinner android:text="35" android:id="@+id/Spinner53" />
-        <Spinner android:text="36" android:id="@+id/Spinner54" />
-        <Spinner android:text="37" android:id="@+id/Spinner55" />
-        <Spinner android:text="38" android:id="@+id/Spinner56" />
-        <Spinner android:text="39" android:id="@+id/Spinner57" />
-        <Spinner android:text="40" android:id="@+id/Spinner58" />
+        <TextView
+            android:text="Вт 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView21" />
 
-    </GridLayout>
+        <TextView
+            android:text="Чт 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView41" />
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="1"
-        android:background="#FF00FF"
-        android:orientation="horizontal" >
+        <TextView
+            android:text="Сб 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView61" />
 
-        <Spinner android:text="41" android:id="@+id/Spinner61" />
-        <Spinner android:text="42" android:id="@+id/Spinner62" />
-        <Spinner android:text="43" android:id="@+id/Spinner63" />
-        <Spinner android:text="44" android:id="@+id/Spinner64" />
-        <Spinner android:text="45" android:id="@+id/Spinner65" />
-        <Spinner android:text="46" android:id="@+id/Spinner66" />
-        <Spinner android:text="47" android:id="@+id/Spinner67" />
-        <Spinner android:text="48" android:id="@+id/Spinner68" />
+    </TableRow>
 
-    </GridLayout>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-</GridLayout>
+        <TextView
+            android:text="Вт 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView22" />
+
+        <TextView
+            android:text="Чт 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView42" />
+
+        <TextView
+            android:text="Сб 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView62" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Вт 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView23" />
+
+        <TextView
+            android:text="Чт 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView43" />
+
+        <TextView
+            android:text="Сб 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView63" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Вт 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView24" />
+
+        <TextView
+            android:text="Чт 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView44" />
+
+        <TextView
+            android:text="Сб 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView64" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Вт 5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView25" />
+
+        <TextView
+            android:text="Чт 5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView45" />
+
+        <TextView
+            android:text="Сб 5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView65" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Вт 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView26" />
+
+        <TextView
+            android:text="Чт 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView46" />
+
+        <TextView
+            android:text="Сб 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView66" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Вт 7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView27" />
+
+        <TextView
+            android:text="Чт 7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView47" />
+
+        <TextView
+            android:text="Сб 7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView67" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:text="Вт 8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:id="@+id/textView28" />
+
+        <TextView
+            android:text="Чт 8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:id="@+id/textView48" />
+
+        <TextView
+            android:text="Сб 8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:id="@+id/textView68" />
+
+    </TableRow>
+
+</TableLayout>

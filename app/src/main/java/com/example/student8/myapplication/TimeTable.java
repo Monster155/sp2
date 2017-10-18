@@ -18,6 +18,8 @@ public class TimeTable extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable);
 
+        //gvMain.setNumColumns(3);
+
         names();
         choose = "Я не даун, a Сеня даун";
 
