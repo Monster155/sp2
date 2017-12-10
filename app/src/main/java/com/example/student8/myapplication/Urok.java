@@ -86,11 +86,11 @@ public class Urok extends Activity {
     }
 
     //действие кнопок
-    public void buttons(){
+    public void buttons() {
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b == 1){
+                if (b == 1) {
                     b = 2;
                     text = (String) tv2.getText();
 
@@ -110,9 +110,8 @@ public class Urok extends Activity {
 
                     ib.setImageResource(R.drawable.error);
                     ib2.setImageResource(R.drawable.check);
-                }
-                else {
-                    if(b == 2){
+                } else {
+                    if (b == 2) {
                         b = 1;
                         tv2.setText(text);
                         tv2.setText(text);
@@ -136,7 +135,7 @@ public class Urok extends Activity {
                         ib.setImageResource(R.drawable.pencil);
                         ib2.setImageResource(R.drawable.plus);
                     }
-                    if(b == 3){
+                    if (b == 3) {
                         b = 1;
                         et2.setText("");
                         et2.setVisibility(View.INVISIBLE);
@@ -166,102 +165,101 @@ public class Urok extends Activity {
         ib2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            if(b == 1){
-                b = 3;
-                et2.setText("");
-                et2.setVisibility(View.VISIBLE);
-                et2.setTextSize(20);
+                if (b == 1) {
+                    b = 3;
+                    et2.setText("");
+                    et2.setVisibility(View.VISIBLE);
+                    et2.setTextSize(20);
 
-                sp.setVisibility(View.INVISIBLE);
-
-                et.setText("");
-                et.setVisibility(View.VISIBLE);
-
-                tv2.setVisibility(View.INVISIBLE);
-                tv2.setTextSize(1);
-
-                ib3.setVisibility(View.INVISIBLE);
-
-                ib.setImageResource(R.drawable.error);
-                ib2.setImageResource(R.drawable.check);
-            }
-            else{
-                if(b == 2){
-                    b = 1;
-                    text = String.valueOf(et.getText());
-                    tv2.setTextSize(20);
-                    tv2.setText(text);
-
-                    String th = String.valueOf(et2.getText());
+                    sp.setVisibility(View.INVISIBLE);
 
                     et.setText("");
-                    et.setVisibility(View.INVISIBLE);
+                    et.setVisibility(View.VISIBLE);
 
-                    et2.setText("");
-                    et2.setVisibility(View.INVISIBLE);
+                    tv2.setVisibility(View.INVISIBLE);
+                    tv2.setTextSize(1);
 
-                    sp.setVisibility(View.VISIBLE);
+                    ib3.setVisibility(View.INVISIBLE);
 
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    ib.setImageResource(R.drawable.error);
+                    ib2.setImageResource(R.drawable.check);
+                } else {
+                    if (b == 2) {
+                        b = 1;
+                        text = String.valueOf(et.getText());
+                        tv2.setTextSize(20);
+                        tv2.setText(text);
 
-                    // Обновление данных БД
-                    ContentValues updateValues = new ContentValues();
-                    updateValues.put(mDBH.TEXT_COLUMN, text);
-                    updateValues.put(mDBH.THEME_COLUMN, th);
-                    db.update(mDBH.DATABASE_TABLE, updateValues, "lesson='" + urok + "' AND theme='" + theme + "';", null);
+                        String th = String.valueOf(et2.getText());
 
-                    spiner();
+                        et.setText("");
+                        et.setVisibility(View.INVISIBLE);
 
-                    ib3.setVisibility(View.VISIBLE);
+                        et2.setText("");
+                        et2.setVisibility(View.INVISIBLE);
 
-                    ib.setImageResource(R.drawable.pencil);
-                    ib2.setImageResource(R.drawable.plus);
+                        sp.setVisibility(View.VISIBLE);
+
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        // Обновление данных БД
+                        ContentValues updateValues = new ContentValues();
+                        updateValues.put(mDBH.TEXT_COLUMN, text);
+                        updateValues.put(mDBH.THEME_COLUMN, th);
+                        db.update(mDBH.DATABASE_TABLE, updateValues, "lesson='" + urok + "' AND theme='" + theme + "';", null);
+
+                        spiner();
+
+                        ib3.setVisibility(View.VISIBLE);
+
+                        ib.setImageResource(R.drawable.pencil);
+                        ib2.setImageResource(R.drawable.plus);
+                    }
+                    if (b == 3) {
+                        b = 1;
+
+                        String t1, t2;
+                        t1 = String.valueOf(et2.getText());
+                        t2 = String.valueOf(et.getText());
+
+                        // Создайте новую строку в БД
+                        ContentValues newValues = new ContentValues();
+                        newValues.put(mDBH.TEXT_COLUMN, t2);
+                        newValues.put(mDBH.THEME_COLUMN, t1);
+                        newValues.put(mDBH.LESSON_COLUMN, urok);
+                        newValues.put(mDBH.CLASS_COLUMN, classes);
+                        db.insert(mDBH.DATABASE_TABLE, null, newValues);
+
+                        et2.setText("");
+                        et2.setVisibility(View.INVISIBLE);
+                        et2.setTextSize(1);
+
+                        et.setText("");
+                        et.setVisibility(View.INVISIBLE);
+
+                        tv2.setVisibility(View.VISIBLE);
+                        tv2.setTextSize(20);
+
+                        sp.setVisibility(View.VISIBLE);
+                        spiner();
+
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        ib3.setVisibility(View.VISIBLE);
+
+                        ib.setImageResource(R.drawable.pencil);
+                        ib2.setImageResource(R.drawable.plus);
+                    }
                 }
-                if(b == 3){
-                    b = 1;
-
-                    String t1, t2;
-                    t1 = String.valueOf(et2.getText());
-                    t2 = String.valueOf(et.getText());
-
-                    // Создайте новую строку в БД
-                    ContentValues newValues = new ContentValues();
-                    newValues.put(mDBH.TEXT_COLUMN, t2);
-                    newValues.put(mDBH.THEME_COLUMN, t1);
-                    newValues.put(mDBH.LESSON_COLUMN, urok);
-                    newValues.put(mDBH.CLASS_COLUMN, classes);
-                    db.insert(mDBH.DATABASE_TABLE, null, newValues);
-
-                    et2.setText("");
-                    et2.setVisibility(View.INVISIBLE);
-                    et2.setTextSize(1);
-
-                    et.setText("");
-                    et.setVisibility(View.INVISIBLE);
-
-                    tv2.setVisibility(View.VISIBLE);
-                    tv2.setTextSize(20);
-
-                    sp.setVisibility(View.VISIBLE);
-                    spiner();
-
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(ib2.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                    ib3.setVisibility(View.VISIBLE);
-
-                    ib.setImageResource(R.drawable.pencil);
-                    ib2.setImageResource(R.drawable.plus);
-                }
-            }
             }
         });
 
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b == 1){
+                if (b == 1) {
                     choose2();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Urok.this);
                     builder.setTitle("Удалить эту тему?")
@@ -283,12 +281,11 @@ public class Urok extends Activity {
                             );
                     AlertDialog alert = builder.create();
                     alert.show();
-                }
-                else{
-                    if(b == 2){
+                } else {
+                    if (b == 2) {
 
                     }
-                    if(b == 3){
+                    if (b == 3) {
 
                     }
                 }
@@ -297,7 +294,7 @@ public class Urok extends Activity {
     }
 
     //обьявление переменных
-    public void names(){
+    public void names() {
         ib = (ImageButton) findViewById(R.id.imageButton);
         ib.setImageResource(R.drawable.pencil);
         ib2 = (ImageButton) findViewById(R.id.imageButton2);
@@ -404,7 +401,7 @@ public class Urok extends Activity {
     }
 
     //что выбрано в spinner
-    public void choose2(){
+    public void choose2() {
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
                 ((TextView) parent.getChildAt(0)).setTextColor(color);
@@ -418,10 +415,11 @@ public class Urok extends Activity {
                             .getColumnIndex(DBHelper.TEXT_COLUMN));
                 }
                 theme = choose[selectedItemPosition];
-                Log.d("Urok after choose2",print);
+                Log.d("Urok after choose2", print);
                 tv2.setText(print);
                 cursor.close();
             }
+
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });

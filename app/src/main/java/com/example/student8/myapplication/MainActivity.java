@@ -10,121 +10,126 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	Button r, t, m, is, a, f, h, in;
-	ImageButton set;
-	private DBScan mDBS;
-	private DBHelper mDBH;
-	private SQLiteDatabase dbS, db;
-	Enter enter;
-	Download dl;
+    Button r, t, m, is, a, f, h, in;
+    ImageButton set;
+    private DBScan mDBS;
+    private DBHelper mDBH;
+    private SQLiteDatabase dbS, db;
+    Enter enter;
+    Download dl;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    TextView tv4;
 
-		ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
-		ib.setImageResource(R.drawable.settings);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		mDBS = new DBScan(this, "spscan.db", null, 1);
-		dbS = mDBS.getWritableDatabase();
-		dbS.close();
-		mDBH = new DBHelper(this, "spdatabase.db", null, 1);
-		db = mDBH.getWritableDatabase();
-		dl = new Download(this);
-		dl.download();
-		r = (Button) findViewById(R.id.buttonR);
-		t = (Button) findViewById(R.id.buttonT);
-		m = (Button) findViewById(R.id.buttonM);
-		is = (Button) findViewById(R.id.buttonIs);
-		a = (Button) findViewById(R.id.buttonA);
-		f = (Button) findViewById(R.id.buttonF);
-		h = (Button) findViewById(R.id.buttonH);
-		set = (ImageButton) findViewById(R.id.imageButton);
-		in = (Button) findViewById(R.id.buttonIn);
+        ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
+        ib.setImageResource(R.drawable.settings);
 
-		r.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 1);
-				startActivity(intent);
-			}
-		});
+        tv4 = (TextView) findViewById(R.id.textView4);
 
-		t.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 2);
-				startActivity(intent);
-			}
-		});
+        mDBS = new DBScan(this, "spscan.db", null, 1);
+        dbS = mDBS.getWritableDatabase();
+        dbS.close();
+        mDBH = new DBHelper(this, "spdatabase.db", null, 1);
+        db = mDBH.getWritableDatabase();
+        dl = new Download(this);
+        dl.download();
+        r = (Button) findViewById(R.id.buttonR);
+        t = (Button) findViewById(R.id.buttonT);
+        m = (Button) findViewById(R.id.buttonM);
+        is = (Button) findViewById(R.id.buttonIs);
+        a = (Button) findViewById(R.id.buttonA);
+        f = (Button) findViewById(R.id.buttonF);
+        h = (Button) findViewById(R.id.buttonH);
+        set = (ImageButton) findViewById(R.id.imageButton);
+        in = (Button) findViewById(R.id.buttonIn);
 
-		m.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 3);
-				startActivity(intent);
-			}
-		});
+        r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 1);
+                startActivity(intent);
+            }
+        });
 
-		is.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 4);
-				startActivity(intent);
-			}
-		});
+        t.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 2);
+                startActivity(intent);
+            }
+        });
 
-		a.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 5);
-				startActivity(intent);
-			}
-		});
+        m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 3);
+                startActivity(intent);
+            }
+        });
 
-		f.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 6);
-				startActivity(intent);
-			}
-		});
+        is.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 4);
+                startActivity(intent);
+            }
+        });
 
-		h.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 7);
-				startActivity(intent);
-			}
-		});
+        a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 5);
+                startActivity(intent);
+            }
+        });
 
-		in.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Urok.class);
-				intent.putExtra("k", 8);
-				startActivity(intent);
-			}
-		});
+        f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 6);
+                startActivity(intent);
+            }
+        });
 
-		set.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Setting.class);
-				startActivity(intent);
-			}
-		});
-	}
+        h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 7);
+                startActivity(intent);
+            }
+        });
 
+        in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Urok.class);
+                intent.putExtra("k", 8);
+                startActivity(intent);
+            }
+        });
+
+        set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Setting.class);
+                startActivity(intent);
+            }
+        });
+    }
 }

@@ -12,13 +12,15 @@
         android:layout_alignParentEnd="true" />-->
 
     <TextView
-        android:text="Cейчас выбран класс №9"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textSize="18sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Cейчас выбран класс №9"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
 
     <Button
         android:text="Выбрать класс"
@@ -30,12 +32,11 @@
         android:spinnerMode="dialog" />
 
     <Button
-        android:text="Расписание"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:text="Добавить расписание уроков"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true" />
-
 
 </RelativeLayout>
